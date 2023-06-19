@@ -31,8 +31,48 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+# Set Up
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To setup this project in your local machine follow the steps bellow
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Step 1
+
+### With Git
+
+If you have Git software in your machine , simply go to a folder , and clone this repository from the location : `https://github.com/Saptarshi-Chakraborty-sb/top-sheet-generator-frontend.git` . It will create a new folder in your current folder and download the code.
+
+### Without Git
+
+If you don't have Git software in your machine, [Click here and download](https://github.com/Saptarshi-Chakraborty-sb/top-sheet-generator-frontend/archive/refs/heads/master.zip) the zip file. Or you can go to above and then 'Code > Download Zip' to download the zip file. Then Unzip it in your folder.
+
+## Step 2
+
+Now open a this new folder in your terminal and run any of the below command depending upon your prefferd package manager.
+
+```bash
+npm install
+# or
+yearn
+# or
+pnpm install
+```
+
+it will download all the dependencies for this project
+
+## Step 3
+
+Now run any of the below commands to start your development server
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
+
+It will start a development server in your [localhost at port 3000](https://localhost:3000)
+
+## Step 4
+
+Now you can open this folder in your favourite editor and start writing code.
