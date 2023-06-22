@@ -1,12 +1,33 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import subjects from '../../data/subjects';
 
 const FormSemester = ({ semester, setSemester }) => {
     const inputRef = useRef(null);
     const elementId = "submitFormSemesterField";
 
+    const [allSemester, setAllSemester] = useState([])
+
+
+    const getAllSemester = () => {
+        let semesterArray = [];
+        for (let key in subjects) {
+            semesterArray.push(key);
+        }
+
+        setAllSemester(() => {
+            return semesterArray;
+        })
+
+        if (semesterArray.length !== 0) {
+            setSemester(() => {
+                return semesterArray[0]
+            })
+        }
+    }
+
     useEffect(() => {
         return () => {
-            setSemester("2nd");
+            getAllSemester();
         }
     }, [])
 
@@ -15,13 +36,23 @@ const FormSemester = ({ semester, setSemester }) => {
             return inputRef.current.value
         })
     }
-    
+
+
     return (
         <div className="my-3">
             <label htmlFor={elementId} className="form-label">Select Semester</label>
-            <select ref={inputRef} onChange={onChange} className="form-select" id={elementId} defaultValue={"2nd"} required={true}>
-                <option value="1st">1st Semester</option>
-                <option value="2nd">2nd Semester</option>
+            <select ref={inputRef} onChange={onChange} className="form-select" id={elementId} value={(allSemester.length == 0) ? "null" : semester} required={true}>
+                {
+                    (allSemester.length == 0) &&
+                    <option value="null" disabled={true}>No Semester Found</option>
+                }
+
+                {
+                    allSemester.map((item) => {
+                        return <option key={item} value={item}>{item} Semester</option>
+                    })
+                }
+
             </select>
         </div>
     )

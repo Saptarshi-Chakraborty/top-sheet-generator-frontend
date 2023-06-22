@@ -22,7 +22,7 @@ const SubmitForm = () => {
     const [classRoll, setClassRoll] = useState("22-CSE-");
     const [reportTitle, setReportTitle] = useState("");
     const [subject, setSubject] = useState("");
-    const [semester, setSemester] = useState("2nd");
+    const [semester, setSemester] = useState("");
     const [filename, setFilename] = useState("");
 
 
@@ -94,7 +94,7 @@ const SubmitForm = () => {
             console.log(_rawData);
             toast.success("Got data Successfully");
 
-            
+
         }).catch((error) => {
             toast.error("Error during fetching data");
         });
@@ -103,6 +103,9 @@ const SubmitForm = () => {
 
     return (
         <form id="form-ca2" onSubmit={submitForm}>
+            {/* <!-- Semester Name --> */}
+            <FormSemester semester={semester} setSemester={setSemester} />
+
             {/* <!-- Student Name --> */}
             <FormName name={studentName} setName={setStudentName} />
 
@@ -110,16 +113,13 @@ const SubmitForm = () => {
             <FormMakautRoll makautRoll={makautRoll} setMakautRoll={setMakautRoll} />
 
             {/* <!-- Class roll number --> */}
-            <FormClassRoll classRoll={classRoll} setClassRoll={setClassRoll} />
+            <FormClassRoll classRoll={classRoll} setClassRoll={setClassRoll} semester={semester} />
 
             {/* <!-- Report Title --> */}
             <FormReportTitle reportTitle={reportTitle} setReportTitle={setReportTitle} />
 
             {/* <!-- Subject Name with Subject Code --> */}
-            <FormSubject subject={subject} setSubject={setSubject} />
-
-            {/* <!-- Semester Name --> */}
-            <FormSemester semester={semester} setSemester={setSemester} />
+            <FormSubject subject={subject} setSubject={setSubject} semester={semester} classRoll={classRoll} />
 
             {/* <!-- Optional File name --> */}
             <FormOptionalFilename filename={filename} setFilename={setFilename} />

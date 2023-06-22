@@ -1,13 +1,49 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import subjects from '../../data/subjects';
 
-const FormSubject = ({ subject, setSubject }) => {
+const FormSubject = ({ subject, setSubject, semester, classRoll }) => {
     const inputRef = useRef(null);
     const elementId = "submitFormMakautRoll";
-    const defaultValue = "Chemistry,BS-CH201";
-    
+
+    const [allSubjects, setAllSubjects] = useState([]);
+    const [department, setDepartment] = useState("")
+
+    const getAllSubjects = () => {
+        if (department == "") return;
+        let semesterWiseSubjects = subjects[semester];
+        let departmentWiseSubjects = semesterWiseSubjects[department];
+
+        setAllSubjects(() => { return departmentWiseSubjects });
+    }
+
+    const extractDepartment = () => {
+        let arr = classRoll.split("-");
+        setDepartment(() => { return arr[1] });
+        // getAllSubjects();
+    }
+
+    useEffect(() => {
+        if (department !== "") {
+            getAllSubjects();
+        }
+    }, [department])
+
+    useEffect(() => {
+        if (department !== "") {
+            extractDepartment();
+        }
+    }, [classRoll])
+
+    useEffect(() => {
+        if (semester !== "") {
+            getAllSubjects();
+        }
+    }, [semester])
+
     useEffect(() => {
         return () => {
-            setSubject(defaultValue);
+            extractDepartment();
+            getAllSubjects();
         }
     }, [])
 
@@ -20,15 +56,20 @@ const FormSubject = ({ subject, setSubject }) => {
     return (
         <div className="my-3">
             <label htmlFor="subjectCode" className="form-label">Select Subject</label>
-            <select ref={inputRef} onChange={onChange} className="form-select" id="subjectCode" defaultValue={defaultValue} required={true}>
-                <option value="Physics,BS-PH201">Physics (BS-PH201)</option>
-                <option value="Chemistry,BS-CH201">Chemistry (BS-CH201)</option>
-                <option value="Mathematics-IIA,BS-M201">Mathematics - II A (BS-M201)</option>
-                <option value="Mathematics-IIB,BS-M202">Mathematics - II B (BS-M202)</option>
-                <option value="English,HM-HU201">English (HM-HU201)</option>
-                <option value="Programming for Problem Solving,ES-CS201">Programming for Problem Solving (ES-CS201)</option>
-                <option value="Basic Electrical Engineering,ES-EE201">Basic Electrical Engineering (ES-EE201)
-                </option>
+            <select ref={inputRef} onChange={onChange} className="form-select" id="subjectCode" value={(allSubjects.length == 0) ? "null" : subject} required={true}>
+                {
+                    (allSubjects.length == 0) &&
+                    <option value="null" disabled={true}>No Subject Found</option>
+                }
+
+                {
+                    allSubjects.map((item) => {
+                        // console.log(item);
+                        return (<option key={item.code} value={`${item.name},${item.code}`}>{item.name} ({item.code})</option>);
+                    })
+                }
+                {/* <option value="Physics,BS-PH201">Physics (BS-PH201)</option> */}
+
             </select>
         </div>
     )

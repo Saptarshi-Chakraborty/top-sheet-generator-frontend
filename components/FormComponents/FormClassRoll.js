@@ -1,9 +1,28 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import subjects from '../../data/subjects';
 
-const FormClassRoll = ({ classRoll, setClassRoll }) => {
+const FormClassRoll = ({ classRoll, setClassRoll, semester }) => {
     const classRoll1 = useRef(null);
     const classRoll2 = useRef(null);
     const classRoll3 = useRef(null);
+
+    const [allDepartments, setAllDepartments] = useState([])
+
+    const getDepartments = () => {
+        if (semester == "") return;
+
+        let semesterWiseDepartments = subjects[semester];
+        let departmentList = [];
+        for (let key in semesterWiseDepartments) {
+            departmentList.push(key);
+        }
+        setAllDepartments(() => departmentList)
+    }
+
+    useEffect(() => {
+        getDepartments();
+    }, [semester])
+
 
     const updateRoll = () => {
         let part1 = String(classRoll1.current.value).trim();
@@ -31,17 +50,22 @@ const FormClassRoll = ({ classRoll, setClassRoll }) => {
                     <option value="23">23</option>
                 </select>
                 <span className="input-group-text fw-bold"> - </span>
-                <select ref={classRoll2} onChange={updateRoll} className="form-select pe-0" aria-label="Default select example" defaultValue={"CSE"}>
-                    <option value="CSE">CSE</option>
-                    <option value="ECE">ECE</option>
-                    <option value="IT">IT</option>
-                    <option value="ME">ME</option>
-                    <option value="CSDS">CSDS</option>
-                    <option value="EE">EE</option>
-                    <option value="AEIE">AEIE</option>
+                <select ref={classRoll2} onChange={updateRoll} className="form-select pe-0" aria-label="Department" defaultValue={(allDepartments.length == 0) ? "null" : allDepartments[0]} required={true}>
+                    {
+                        (allDepartments.length == 0) &&
+                        <option value="null" disabled={true}>None</option>
+                    }
+
+                    {
+                        allDepartments.map((item) => {
+                            return <option key={item} value={item}>{item}</option>
+                        })
+                    }
+                    {/* <option value="CSE">CSE</option> */}
+
                 </select>
                 <span className="input-group-text fw-bold"> - </span>
-                <input ref={classRoll3} onChange={updateRoll} type="number" id='cRoll3' className="form-control flex-grow-1"  placeholder="Roll" required={true} />
+                <input ref={classRoll3} onChange={updateRoll} type="number" id='cRoll3' className="form-control flex-grow-1" placeholder="Roll" required={true} />
             </div>
         </div>
     )
