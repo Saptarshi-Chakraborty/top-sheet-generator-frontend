@@ -13,9 +13,6 @@ import { toast } from 'react-toastify';
 const SubmitForm = () => {
     'use client';
 
-    // Ref variables
-    const isLoading = useRef(false);
-
     // State Variables
     const [studentName, setStudentName] = useState("");
     const [makautRoll, setMakautRoll] = useState("");
@@ -24,6 +21,7 @@ const SubmitForm = () => {
     const [subject, setSubject] = useState("");
     const [semester, setSemester] = useState("");
     const [filename, setFilename] = useState("");
+    const [isLoading, setIsLoading] = useState(false)
 
 
     // Data variables
@@ -57,11 +55,12 @@ const SubmitForm = () => {
 
     function submitForm(e) {
         e.preventDefault();
+        setIsLoading(true);
         console.log("Submitting Form...");
         // toast.error("Hello Dosto",{
         //     autoClose: 4000
         // });
-
+        
         // check custom filename conditions
         if (filename !== '' && String(filename).length <= 3) {
             toast.error("Please give a valid name");
@@ -70,7 +69,7 @@ const SubmitForm = () => {
             toast.error("Filename can not be 'null'");
             return;
         }
-
+        
         // Prepare parameters for fetch
         let primaryFormData = {
             sName: studentName.trim(),
@@ -82,19 +81,19 @@ const SubmitForm = () => {
             cName: (filename === '' ? "null" : filename)
         };
         console.table(primaryFormData);
-
+        
         let formData = new FormData();
         for (let key in primaryFormData)
             formData.append(key, primaryFormData[key]);
-
-        let params = { method: "POST", body: formData };
-
-        fetch("./", params).then(res => res.text()).then((_rawData) => {
-
-            console.log(_rawData);
-            toast.success("Got data Successfully");
-
-
+            
+            let params = { method: "POST", body: formData };
+            
+            fetch("./", params).then(res => res.text()).then((_rawData) => {
+                
+                console.log(_rawData);
+                toast.success("Got data Successfully");
+                
+                setIsLoading(false);
         }).catch((error) => {
             toast.error("Error during fetching data");
         });
@@ -128,8 +127,18 @@ const SubmitForm = () => {
 
             {/* <!-- Submit Button --> */}
             <div className="my-3 text-center">
-                <button id="submitBtn" type="submit" className="btn btn-lg btn-outline-dark" onClick={submitForm} disabled={isLoading.current}>SUBMIT</button>
+                {
+                    (isLoading == false) ?
+                        <button id="submitBtn" type="submit" className="btn btn-lg btn-outline-dark" onClick={submitForm}>SUBMIT</button>
+                        :
+                        <button className="btn btn-lg btn-outline-dark" type="button" disabled>
+                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            &nbsp;
+                            Loading...
+                        </button>
+                }
             </div>
+
         </form>
     )
 }
