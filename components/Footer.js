@@ -5,7 +5,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <footer className="text-center font-monospace mt-5">
+        <footer className="text-center font-monospace mt-4">
             <hr />
 
             <p><Link href="/feedback" className="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fs-4">Give a Feedback</Link></p>
@@ -14,7 +14,7 @@ const Footer = () => {
             <a className="text-decoration-none text-black"
                 href="mailto:saptarshi.chakraborty.04.sc+topsheetgenerator@gmail.com?subject=Feedback from top sheet generator website"> saptarshi.chakraborty.04sc@gmail.com</a>
             <br />
-            <span>{`${String.fromCodePoint(0x00A9)}`} 2022-25</span>
+            <span>{`${String.fromCodePoint(0x00A9)}`} 2022-26</span>
 
 
         </footer>

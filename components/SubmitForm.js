@@ -11,8 +11,9 @@ import FormSubject from './FormComponents/FormSubject';
 import { toast } from 'react-toastify';
 import { API } from '../data/api';
 import DownloadModal from './DownloadModal';
+import getUserAgentDetails from '../utility/userAgent';
 
-const SubmitForm = () => {
+const SubmitForm = ({ isLoading, setIsLoading }) => {
     'use client';
 
     // State Variables
@@ -24,7 +25,6 @@ const SubmitForm = () => {
     const [subject, setSubject] = useState("");
     const [semester, setSemester] = useState("");
     const [filename, setFilename] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
     const [modalData, setModalData] = useState({ pdfName: "", downloadUrl: "" })
 
 
@@ -54,6 +54,7 @@ const SubmitForm = () => {
         }
 
         let subjectArray = subject.trim().split(",");
+        let userAgent = getUserAgentDetails();
 
         // Prepare parameters for fetch
         let primaryFormData = {
@@ -66,7 +67,10 @@ const SubmitForm = () => {
             semester: semester.trim(),
             includeClassRoll: `${includeClassRoll}`,
             reportTitle: reportTitle.trim().toUpperCase(),
-            customFileName: (filename === '' ? "" : filename)
+            customFileName: (filename === '' ? "" : filename),
+            deviceType: userAgent.deviceType,
+            browserName: userAgent.browserName,
+            osName: userAgent.osName,
         };
         console.table(primaryFormData);
 
@@ -79,7 +83,7 @@ const SubmitForm = () => {
         fetch(API.curentDeployment.url, params).then(res => res.text()).then((_rawData) => {
             // console.log(_rawData);
             const data = JSON.parse(_rawData);
-            console.log(data)
+            // console.log(data)
 
             // Handle error status got from server
             if (data.status === "error") {
@@ -109,6 +113,8 @@ const SubmitForm = () => {
             setIsLoading(false);
             addToLocalStorage(data.params, downloadUrl, previewUrl, pdfFileName, pdfId);
             resetForm();
+
+            localStorage.setItem("lastServerResponse", _rawData);// save lastServerResponse for feedback purpose
 
         }).catch((error) => {
             setIsLoading(false);
@@ -195,7 +201,7 @@ const SubmitForm = () => {
             <div className="my-3 text-center">
                 {
                     (isLoading == false) ?
-                        <button id="submitBtn" type="submit" className="btn btn-lg btn-outline-dark" onClick={submitForm}>SUBMIT</button>
+                        <button id="submitBtn" type="submit" className="btn btn-lg btn-outline-dark">SUBMIT</button>
                         :
                         <button className="btn btn-lg btn-outline-dark" type="button" disabled>
                             <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

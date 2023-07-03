@@ -14,7 +14,7 @@ const Body = () => {
         }
     }, []);
 
-    
+
     return (
         <div className='container my-2'>
             <h1 className='text-center my-3 fs-2'>All Your Top Sheets</h1>
@@ -30,9 +30,6 @@ const Body = () => {
                         </p>
                     </div>
             }
-
-
-
         </div > // container end
     )
 }
