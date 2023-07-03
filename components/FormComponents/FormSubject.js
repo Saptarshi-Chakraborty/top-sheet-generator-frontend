@@ -14,6 +14,9 @@ const FormSubject = ({ subject, setSubject, semester, classRoll }) => {
         let departmentWiseSubjects = semesterWiseSubjects[department];
 
         setAllSubjects(() => { return departmentWiseSubjects });
+        
+        let fullSubject = `${departmentWiseSubjects[0].name},${departmentWiseSubjects[0].code}`
+        setSubject(() => fullSubject)
     }
 
     const extractDepartment = () => {

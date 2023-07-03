@@ -9,6 +9,8 @@ import FormOptionalFilename from './FormComponents/FormOptionalFileName';
 import FormSemester from './FormComponents/FormSemester';
 import FormSubject from './FormComponents/FormSubject';
 import { toast } from 'react-toastify';
+import { API } from '../data/api';
+import DownloadModal from './DownloadModal';
 
 const SubmitForm = () => {
     'use client';
@@ -17,11 +19,14 @@ const SubmitForm = () => {
     const [studentName, setStudentName] = useState("");
     const [makautRoll, setMakautRoll] = useState("");
     const [classRoll, setClassRoll] = useState("22-CSE-");
+    const [includeClassRoll, setIncludeClassRoll] = useState(false)
     const [reportTitle, setReportTitle] = useState("");
     const [subject, setSubject] = useState("");
     const [semester, setSemester] = useState("");
     const [filename, setFilename] = useState("");
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
+    const [modalData, setModalData] = useState({ pdfName: "", downloadUrl: "" })
+
 
 
     // Data variables
@@ -60,7 +65,7 @@ const SubmitForm = () => {
         // toast.error("Hello Dosto",{
         //     autoClose: 4000
         // });
-        
+
         // check custom filename conditions
         if (filename !== '' && String(filename).length <= 3) {
             toast.error("Please give a valid name");
@@ -69,38 +74,105 @@ const SubmitForm = () => {
             toast.error("Filename can not be 'null'");
             return;
         }
-        
+
+        let subjectArray = subject.trim().split(",");
+
         // Prepare parameters for fetch
         let primaryFormData = {
-            sName: studentName.trim(),
-            mRoll: makautRoll.trim(),
-            sRoll: classRoll.trim(),
-            title: reportTitle.trim(),
-            subject: subject.trim(),
-            sem: semester.trim(),
-            cName: (filename === '' ? "null" : filename)
+            action: 'newPDF',
+            name: studentName.trim(),
+            makautRoll: makautRoll.trim(),
+            classRoll: classRoll.trim().toUpperCase(),
+            subjectName: subjectArray[0].trim(),
+            subjectCode: subjectArray[1].trim(),
+            semester: semester.trim(),
+            includeClassRoll: "true",
+            reportTitle: reportTitle.trim().toUpperCase(),
+            customFileName: (filename === '' ? "" : filename)
         };
         console.table(primaryFormData);
-        
+        setIsLoading(false);
+        return;
         let formData = new FormData();
         for (let key in primaryFormData)
             formData.append(key, primaryFormData[key]);
-            
-            let params = { method: "POST", body: formData };
-            
-            fetch("./", params).then(res => res.text()).then((_rawData) => {
-                
-                console.log(_rawData);
-                toast.success("Got data Successfully");
-                
-                setIsLoading(false);
-        }).catch((error) => {
-            toast.error("Error during fetching data");
-        });
 
+        let params = { method: "POST", body: formData };
+
+        fetch(API.curentDeployment.url, params).then(res => res.text()).then((_rawData) => {
+            // console.log(_rawData);
+            const data = JSON.parse(_rawData);
+            console.log(data)
+
+            // Handle error status got from server
+            if (data.status === "error") {
+                console.log("error happened");
+                let typeOfError = data.type;
+                if (typeOfError === "wrong-request")
+                    toast.error("A wrong request has been sent to server");
+                else if (typeOfError === "invalid-parameter")
+                    toast.error("Request with wrong parameter value was sent to server");
+                setIsLoading(false);
+                return;
+            }
+
+            if (data.status !== "success") {
+                toast.error("An unexpected status got from server")
+                setIsLoading(false);
+                return;
+            }
+
+            const pdfFileName = data.pdfFileName;
+            const previewUrl = data.previewUrl;
+            const downloadUrl = data.downloadUrl;
+
+            window.location.replace(downloadUrl); // auto download the pdf
+            setModalData(() => { return { pdfName: pdfFileName, downloadUrl: downloadUrl } })
+            setIsLoading(false);
+            addToLocalStorage(pdfFileName, previewUrl, downloadUrl)
+
+        }).catch((error) => {
+            setIsLoading(false);
+            console.table(error);
+            if (String(error.stack).includes("SyntaxError"))
+                toast.error("Unexpected response from server");
+            else
+                toast.error("Error during fetching data");
+        });
     }
 
-    return (
+    const addToLocalStorage = (pdfFileName, previewUrl, downloadUrl) => {
+        let jsonString = localStorage.getItem("allPdfs");
+        let allPdfs = [];
+        if (jsonString !== null) {
+            allPdfs = JSON.parse(jsonString);
+        }
+
+        let subjectArray = subject.split(",");
+        allPdfs.push({
+            studentName,
+            makautRoll,
+            classRoll,
+            reportTitle,
+            subjectName: subjectArray[0],
+            subjectCode: subjectArray[1],
+            semester,
+            pdfName: pdfFileName,
+            previewUrl,
+            downloadUrl,
+            timeStamp: new Date().getTime()
+        });
+
+        jsonString = JSON.stringify(allPdfs);
+        localStorage.setItem("allPdfs", jsonString);
+    }
+
+
+    return (<>
+        {/* Download Modal */}
+        <DownloadModal pdfName={modalData.pdfName} downloadUrl={modalData.downloadUrl} setModalData={setModalData} />
+
+        {/* Submit Form */}
         <form id="form-ca2" onSubmit={submitForm}>
             {/* <!-- Semester Name --> */}
             <FormSemester semester={semester} setSemester={setSemester} />
@@ -112,7 +184,7 @@ const SubmitForm = () => {
             <FormMakautRoll makautRoll={makautRoll} setMakautRoll={setMakautRoll} />
 
             {/* <!-- Class roll number --> */}
-            <FormClassRoll classRoll={classRoll} setClassRoll={setClassRoll} semester={semester} />
+            <FormClassRoll classRoll={classRoll} setClassRoll={setClassRoll} semester={semester} includeClassRoll={includeClassRoll} setIncludeClassRoll={setIncludeClassRoll} />
 
             {/* <!-- Report Title --> */}
             <FormReportTitle reportTitle={reportTitle} setReportTitle={setReportTitle} />
@@ -140,7 +212,7 @@ const SubmitForm = () => {
             </div>
 
         </form>
-    )
+    </>)
 }
 
 export default SubmitForm

@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Footer from './Footer'
-import DownloadModal from './DownloadModal'
 import SubmitForm from './SubmitForm'
 
 const Body = () => {
@@ -13,7 +12,6 @@ const Body = () => {
             </h3>
             <small className="text-muted text-decoration-none mb-2">*(No information will be stored on the server)</small>
 
-            <DownloadModal />
             <SubmitForm />
             <Footer />
         </div>

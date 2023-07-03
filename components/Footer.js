@@ -8,7 +8,7 @@ const Footer = () => {
         <footer className="text-center font-monospace mt-5">
             <hr />
 
-            <p><Link href="/feedback" className="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fs-4">Leave a Feedback</Link></p>
+            <p><Link href="/feedback" className="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fs-4">Give a Feedback</Link></p>
 
             <span>Made with 💖 by SC&trade;</span> |
             <a className="text-decoration-none text-black"

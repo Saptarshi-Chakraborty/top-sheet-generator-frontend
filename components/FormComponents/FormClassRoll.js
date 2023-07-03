@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import subjects from '../../data/subjects';
 
-const FormClassRoll = ({ classRoll, setClassRoll, semester }) => {
+const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, setIncludeClassRoll }) => {
     const classRoll1 = useRef(null);
     const classRoll2 = useRef(null);
     const classRoll3 = useRef(null);
+    const checkBoxRef = useRef(null)
 
     const [allDepartments, setAllDepartments] = useState([])
+    const [rollNumber, setRollNumber] = useState("000")
 
     const getDepartments = () => {
         if (semester == "") return;
@@ -37,13 +39,20 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester }) => {
         setClassRoll(() => {
             return classRoll;
         })
+
+        setRollNumber(() => part3);
     }
 
+    const updateCheckBox = () => {
+        setIncludeClassRoll((oldValue) => !oldValue)
+    }
 
+    
     return (
         <div className="my-3">
             <label htmlFor="cRoll3" className="form-label">Your Class Roll Number &nbsp; [ <span id="displayRoll">{classRoll}</span> ]</label>
-            <div className="input-group mb-3">
+
+            <div className="input-group mb-2">
                 <select ref={classRoll1} onChange={updateRoll} className="form-select pe-0" aria-label="Default select example" defaultValue={"22"}>
                     <option value="21">21</option>
                     <option value="22">22</option>
@@ -65,7 +74,11 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester }) => {
 
                 </select>
                 <span className="input-group-text fw-bold"> - </span>
-                <input ref={classRoll3} onChange={updateRoll} type="number" id='cRoll3' className="form-control flex-grow-1" placeholder="Roll" required={true} />
+                <input ref={classRoll3} onChange={updateRoll} value={rollNumber} type="number" id='cRoll3' className="form-control flex-grow-1" placeholder="Roll" maxLength={3} required={true} />
+            </div>
+            <div className="form-check">
+                <input ref={checkBoxRef} onChange={updateCheckBox} className="form-check-input" type="checkbox" id="includeClassRollCheckbox" checked={includeClassRoll} />
+                <label className="form-check-label" htmlFor="includeClassRollCheckbox">Add class roll in the Top Sheet</label>
             </div>
         </div>
     )
