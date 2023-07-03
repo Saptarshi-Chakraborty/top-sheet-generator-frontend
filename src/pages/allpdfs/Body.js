@@ -1,42 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import AllPdfs from './AllPdfs';
+import Link from 'next/link';
+import getLocalStorageData from '../../../utility/localstorage';
 
 const Body = () => {
+    const [allPdFs, setAllPdFs] = useState([])
 
+    useEffect(() => {
+        return () => {
+            let allPdfsArray = getLocalStorageData("allPdfs");
+            console.log(allPdfsArray)
+            setAllPdFs(() => allPdfsArray);
+        }
+    }, []);
+
+    
     return (
-        <div className='container'>
-            All PDFs Page
-
-            <div class="accordion" id="accordionExample">
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Accordion Item #1
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
+        <div className='container my-2'>
+            <h1 className='text-center my-3 fs-2'>All Your Top Sheets</h1>
+            {
+                (allPdFs.length > 0) ?
+                    <AllPdfs allPdfs={allPdFs} />
+                    :
+                    <div className='text-center'>
+                        <h3 >You haven't any generated PDF</h3>
+                        <p>Generate a Top Sheet at &nbsp;
+                            <Link href='/' className=''>home page</Link>
+                            &nbsp; to see it here
+                        </p>
                     </div>
-                </div>
+            }
 
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Accordion Item #2
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                </div>
 
-            </div>
 
-        </div> // container end
+        </div > // container end
     )
 }
 

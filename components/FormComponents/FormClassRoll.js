@@ -8,7 +8,7 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, se
     const checkBoxRef = useRef(null)
 
     const [allDepartments, setAllDepartments] = useState([])
-    const [rollNumber, setRollNumber] = useState("000")
+    const [rollNumber, setRollNumber] = useState("")
 
     const getDepartments = () => {
         if (semester == "") return;
@@ -24,6 +24,12 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, se
     useEffect(() => {
         getDepartments();
     }, [semester])
+
+    
+    useEffect(() => {
+        if (classRoll.split("-")[2] == "")
+            setRollNumber("");
+    }, [classRoll])
 
 
     const updateRoll = () => {
@@ -47,7 +53,7 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, se
         setIncludeClassRoll((oldValue) => !oldValue)
     }
 
-    
+
     return (
         <div className="my-3">
             <label htmlFor="cRoll3" className="form-label">Your Class Roll Number &nbsp; [ <span id="displayRoll">{classRoll}</span> ]</label>

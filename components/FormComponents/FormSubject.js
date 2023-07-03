@@ -14,7 +14,7 @@ const FormSubject = ({ subject, setSubject, semester, classRoll }) => {
         let departmentWiseSubjects = semesterWiseSubjects[department];
 
         setAllSubjects(() => { return departmentWiseSubjects });
-        
+
         let fullSubject = `${departmentWiseSubjects[0].name},${departmentWiseSubjects[0].code}`
         setSubject(() => fullSubject)
     }
@@ -42,6 +42,12 @@ const FormSubject = ({ subject, setSubject, semester, classRoll }) => {
             getAllSubjects();
         }
     }, [semester])
+
+    useEffect(() => {
+        if (subject == "" && allSubjects.length != 0)
+            setSubject(() => `${allSubjects[0].name},${allSubjects[0].code}`)
+    }, [subject])
+
 
     useEffect(() => {
         return () => {

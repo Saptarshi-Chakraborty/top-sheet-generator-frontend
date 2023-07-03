@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FormName from './FormComponents/FormName';
 import FormMakautRoll from './FormComponents/FormMakautRoll';
 import FormClassRoll from './FormComponents/FormClassRoll';
@@ -28,30 +28,8 @@ const SubmitForm = () => {
     const [modalData, setModalData] = useState({ pdfName: "", downloadUrl: "" })
 
 
-
-    // Data variables
-    // Version 5 on Mar 8, 10:30 PM
-    // const SUBMIT_API = "https://script.google.com/macros/s/AKfycbwbOMO3PuiOpQCKra95q3cHLJKp3R1AxuUsQTaCnOJjOTgtk4Vj32i-HRB6ItYhW6kQKg/exec";
-    const SUBMIT_API = "https://www.google.com";
-
     useEffect(() => {
         return () => {
-            setStudentName(() => {
-                return "Jhon HELLO"
-            });
-
-            setMakautRoll(() => {
-                return "1234567890"
-            })
-
-            setClassRoll(() => {
-                return "22-CSE-000";
-            })
-
-            setReportTitle(() => {
-                return "This is a Demo Title"
-            })
-
             if (isLoading.current == true)
                 isLoading.current = false;
         }
@@ -86,13 +64,12 @@ const SubmitForm = () => {
             subjectName: subjectArray[0].trim(),
             subjectCode: subjectArray[1].trim(),
             semester: semester.trim(),
-            includeClassRoll: "true",
+            includeClassRoll: `${includeClassRoll}`,
             reportTitle: reportTitle.trim().toUpperCase(),
             customFileName: (filename === '' ? "" : filename)
         };
         console.table(primaryFormData);
-        setIsLoading(false);
-        return;
+
         let formData = new FormData();
         for (let key in primaryFormData)
             formData.append(key, primaryFormData[key]);
@@ -125,11 +102,13 @@ const SubmitForm = () => {
             const pdfFileName = data.pdfFileName;
             const previewUrl = data.previewUrl;
             const downloadUrl = data.downloadUrl;
+            const pdfId = data.pdfId;
 
             window.location.replace(downloadUrl); // auto download the pdf
             setModalData(() => { return { pdfName: pdfFileName, downloadUrl: downloadUrl } })
             setIsLoading(false);
-            addToLocalStorage(pdfFileName, previewUrl, downloadUrl)
+            addToLocalStorage(data.params, downloadUrl, previewUrl, pdfFileName, pdfId);
+            resetForm();
 
         }).catch((error) => {
             setIsLoading(false);
@@ -141,23 +120,38 @@ const SubmitForm = () => {
         });
     }
 
-    const addToLocalStorage = (pdfFileName, previewUrl, downloadUrl) => {
+    function resetForm() {
+        setSemester("1st");
+        setStudentName("");
+        setMakautRoll("");
+        setClassRoll("22-CSE-");
+        setIncludeClassRoll(false);
+        setReportTitle("");
+        setSubject("");
+        setFilename("");
+    }
+
+    const addToLocalStorage = (studentDetails, downloadUrl, previewUrl, pdfName, pdfId) => {
         let jsonString = localStorage.getItem("allPdfs");
         let allPdfs = [];
         if (jsonString !== null) {
             allPdfs = JSON.parse(jsonString);
         }
 
-        let subjectArray = subject.split(",");
+        let department = studentDetails.classRoll.split("-")[1];
+
+
         allPdfs.push({
-            studentName,
-            makautRoll,
-            classRoll,
-            reportTitle,
-            subjectName: subjectArray[0],
-            subjectCode: subjectArray[1],
-            semester,
-            pdfName: pdfFileName,
+            studentName: studentDetails.name,
+            makautRoll: studentDetails.makautRoll,
+            classRoll: studentDetails.classRoll,
+            reportTitle: studentDetails.reportTitle,
+            subjectName: studentDetails.subjectName,
+            subjectCode: studentDetails.subjectCode,
+            semester: studentDetails.semester,
+            department,
+            pdfId,
+            pdfName,
             previewUrl,
             downloadUrl,
             timeStamp: new Date().getTime()
