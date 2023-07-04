@@ -9,7 +9,6 @@ const Body = () => {
     useEffect(() => {
         return () => {
             let allPdfsArray = getLocalStorageData("allPdfs");
-            console.log(allPdfsArray)
             setAllPdFs(() => allPdfsArray);
         }
     }, []);
