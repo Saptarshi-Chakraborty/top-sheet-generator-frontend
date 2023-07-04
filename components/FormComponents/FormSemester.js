@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import subjects from '../../data/subjects';
+import subjects from '../../public/data/subjects';
 
 const FormSemester = ({ semester, setSemester }) => {
     const inputRef = useRef(null);
