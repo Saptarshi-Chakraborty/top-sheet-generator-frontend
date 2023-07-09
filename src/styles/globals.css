@@ -1,3 +1,7 @@
-*{
-  
+/* Add a media query to padding 1em to nav element when the screen size is greater than 600px */
+@media screen and (width > 1000px) {
+  nav {
+    padding-left: 1em !important;
+    padding-right: 1em !important;
+  }
 }
