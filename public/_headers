@@ -1,0 +1,12 @@
+# This file overrides the noindex header for web crawler
+
+/
+  Access-Control-Allow-Origin: *
+  x-robots-tag: index
+
+/allpdfs
+  X-Robots-Tag: noindex
+  
+
+/feedback
+  Access-Control-Allow-Origin: *

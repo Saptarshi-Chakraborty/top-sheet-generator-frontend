@@ -57,7 +57,7 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, se
         <div className="my-3">
             <label htmlFor="cRoll3" className="form-label">Your Class Roll Number &nbsp; [ <span id="displayRoll">{classRoll}</span> ]</label>
 
-            <div className="input-group mb-2">
+            <div className="input-group my-3">
                 <select ref={classRoll1} onChange={updateRoll} className="form-select pe-0" aria-label="Default select example" defaultValue={"22"}>
                     <option value="21">21</option>
                     <option value="22">22</option>
@@ -81,6 +81,7 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, se
                 <span className="input-group-text fw-bold"> - </span>
                 <input ref={classRoll3} onChange={updateRoll} value={rollNumber} type="number" id='cRoll3' className="form-control flex-grow-1" placeholder="Roll" maxLength={3} required={true} />
             </div>
+
             <div className="form-check">
                 <input ref={checkBoxRef} onChange={updateCheckBox} className="form-check-input" type="checkbox" id="includeClassRollCheckbox" checked={includeClassRoll} />
                 <label className="form-check-label" htmlFor="includeClassRollCheckbox">Add class roll in the Top Sheet</label>

@@ -46,7 +46,7 @@ const FormSubject = ({ subject, setSubject, semester, classRoll, _allSubjects })
     return (
         <div className="my-3">
             <label htmlFor="subjectCode" className="form-label">Select Subject</label>
-            <select ref={inputRef} onChange={onChange} className="form-select" id="subjectCode" value={(allSubjects.length == 0) ? "null" : subject} required={true} readOnly>
+            <select ref={inputRef} onChange={onChange} className="form-select" id="subjectCode" value={(allSubjects.length == 0) ? "null" : subject} required={true}>
                 {
                     (allSubjects.length == 0) &&
                     <option value="null" disabled={true}>No Subject Found</option>
