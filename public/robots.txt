@@ -1,0 +1,9 @@
+User-agent: Googlebot
+Disallow: /nogooglebot/
+Disallow: /allpdfs
+
+User-agent: *
+Allow: /
+Disallow: /allpdfs
+
+Sitemap: https://ca2-top-sheet.pages.dev/sitemap.xml

@@ -10,7 +10,7 @@ const Body = () => {
 
     return (
         <div className="container my-3">
-            <h3 className="text-decoration-underline mb-3 main-heading">Enter below details to generate your top sheet for CA2 exam (1st Year)</h3>
+            <h3 className="text-decoration-underline mb-3 main-heading">Enter below details to generate your top sheet for CA2 exam</h3>
 
             <SubmitForm isLoading={isLoading} setIsLoading={setIsLoading} />
             <LinkToAllPdfs isLoading={isLoading} />

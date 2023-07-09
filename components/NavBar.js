@@ -11,7 +11,7 @@ const Navbar = () => {
 
                     <span className="navbar-brand">
                         <img src="./favicon.png" alt="FIEM" width="30" height="24" className="d-inline-block align-text-top" />
-                        <b> TOP&nbsp; SHEET&nbsp; GENERATOR</b>
+                        <b>&nbsp; TOP&nbsp; SHEET&nbsp; GENERATOR</b>
                     </span>
 
                     {/* Hamburger for Small Screen Navigation */}
