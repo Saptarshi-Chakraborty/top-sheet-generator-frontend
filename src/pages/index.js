@@ -1,4 +1,4 @@
-import Body from "../../components/Body";
+import Body from "../../components/home/Body";
 import Navbar from "../../components/NavBar";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

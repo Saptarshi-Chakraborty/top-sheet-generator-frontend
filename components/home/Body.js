@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react'
-import Footer from './Footer'
+import Footer from '../Footer'
 import SubmitForm from './SubmitForm'
 import LinkToAllPdfs from './LinkToAllPdfs';
 

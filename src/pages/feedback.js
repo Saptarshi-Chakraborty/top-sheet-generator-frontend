@@ -1,12 +1,12 @@
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Body from './Body';
-import Navbar from '../../../components/NavBar';
+import Body from '../../components/feedback/Body';
+import Navbar from '../../components/NavBar';
 
 export default function Home() {
     return (
         <>
-            <Navbar/>
+            <Navbar />
             <Body />
 
             <ToastContainer

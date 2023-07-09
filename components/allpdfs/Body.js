@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AllPdfs from './AllPdfs';
 import Link from 'next/link';
-import getLocalStorageData from '../../../utility/localstorage';
+import getLocalStorageData from '../../utility/localstorage';
 
 const Body = () => {
     const [allPdFs, setAllPdFs] = useState([])

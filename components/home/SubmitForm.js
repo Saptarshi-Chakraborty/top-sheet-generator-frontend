@@ -9,9 +9,9 @@ import FormOptionalFilename from './FormComponents/FormOptionalFileName';
 import FormSemester from './FormComponents/FormSemester';
 import FormSubject from './FormComponents/FormSubject';
 import { toast } from 'react-toastify';
-import { API } from '../public/data/api';
+import { API } from '../../public/data/api';
 import DownloadModal from './DownloadModal';
-import getUserAgentDetails from '../utility/userAgent';
+import getUserAgentDetails from '../../utility/userAgent';
 
 const SubmitForm = ({ isLoading, setIsLoading }) => {
     'use client';

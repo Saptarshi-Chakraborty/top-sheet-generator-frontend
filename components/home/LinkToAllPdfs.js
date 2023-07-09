@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import getLocalStorageData from '../utility/localstorage';
+import getLocalStorageData from '../../utility/localstorage';
 
 const LinkToAllPdfs = ({ isLoading }) => {
     const [allPdfs, setAllPdfs] = useState([])

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
-import { API } from '../../../public/data/api'
-import getLocalStorageData from '../../../utility/localstorage'
-import getUserAgentDetails from '../../../utility/userAgent'
+import { API } from '../../public/data/api'
+import getLocalStorageData from '../../utility/localstorage'
+import getUserAgentDetails from '../../utility/userAgent'
 import { toast } from 'react-toastify'
 
 const Form = () => {
