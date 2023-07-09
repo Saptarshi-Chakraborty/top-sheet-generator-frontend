@@ -1,16 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react'
-import subjects from '../../public/data/subjects';
+import { useEffect, useRef, useState } from 'react';
 
-const FormSemester = ({ semester, setSemester }) => {
+const FormSemester = ({ semester, setSemester, allSubjects }) => {
     const inputRef = useRef(null);
     const elementId = "submitFormSemesterField";
 
     const [allSemester, setAllSemester] = useState([])
-
+    const [_subjects, _setSubjects] = useState(null);
 
     const getAllSemester = () => {
+        if (allSubjects === null) return;
+
         let semesterArray = [];
-        for (let key in subjects) {
+
+        for (let key in allSubjects) {
             semesterArray.push(key);
         }
 
@@ -26,10 +28,10 @@ const FormSemester = ({ semester, setSemester }) => {
     }
 
     useEffect(() => {
-        return () => {
+        if (allSubjects !== null)
             getAllSemester();
-        }
-    }, [])
+
+    }, [allSubjects])
 
     const onChange = () => {
         setSemester(() => {

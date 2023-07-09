@@ -7,22 +7,23 @@ const Body = () => {
     const [allPdFs, setAllPdFs] = useState([])
 
     useEffect(() => {
-        return () => {
-            let allPdfsArray = getLocalStorageData("allPdfs");
-            setAllPdFs(() => allPdfsArray);
-        }
+        if (allPdFs.length != 0) return;
+        let allPdfsArray = getLocalStorageData("allPdfs");
+        setAllPdFs(() => allPdfsArray);
     }, []);
 
 
     return (
         <div className='container my-2'>
-            <h1 className='text-center my-3 fs-2'>All Your Top Sheets</h1>
             {
                 (allPdFs.length > 0) ?
-                    <AllPdfs allPdfs={allPdFs} />
+                    <>
+                        <h1 className='text-center my-3 fs-2'>All Your Top Sheets</h1>
+                        <AllPdfs allPdfs={allPdFs} />
+                    </>
                     :
                     <div className='text-center'>
-                        <h3 >You haven't any generated PDF</h3>
+                        <h3 >You don't have any generated PDF</h3>
                         <p>Generate a Top Sheet at &nbsp;
                             <Link href='/' className=''>home page</Link>
                             &nbsp; to see it here

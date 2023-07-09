@@ -26,10 +26,13 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
     const [semester, setSemester] = useState("");
     const [filename, setFilename] = useState("");
     const [modalData, setModalData] = useState({ pdfName: "", downloadUrl: "" })
+    const [allSubjects, setAllSubjects] = useState(null)
 
 
     useEffect(() => {
+        getSubjectData();
         return () => {
+            // getSubjectData();
             if (isLoading.current == true)
                 isLoading.current = false;
         }
@@ -40,12 +43,9 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
         e.preventDefault();
         setIsLoading(true);
         console.log("Submitting Form...");
-        // toast.error("Hello Dosto",{
-        //     autoClose: 4000
-        // });
 
         // check custom filename conditions
-        if (filename !== '' && String(filename).length <= 3) {
+        if (filename !== '' && String(filename)?.length <= 3) {
             toast.error("Please give a valid name");
             return;
         } else if (filename === "null") {
@@ -53,24 +53,24 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
             return;
         }
 
-        let subjectArray = subject.trim().split(",");
+        let subjectArray = subject?.trim().split(",");
         let userAgent = getUserAgentDetails();
 
         // Prepare parameters for fetch
         let primaryFormData = {
             action: 'newPDF',
-            name: studentName.trim(),
-            makautRoll: makautRoll.trim(),
-            classRoll: classRoll.trim().toUpperCase(),
-            subjectName: subjectArray[0].trim(),
-            subjectCode: subjectArray[1].trim(),
-            semester: semester.trim(),
+            name: studentName?.trim(),
+            makautRoll: makautRoll?.trim(),
+            classRoll: classRoll?.trim().toUpperCase(),
+            subjectName: subjectArray[0]?.trim(),
+            subjectCode: subjectArray[1]?.trim(),
+            semester: semester?.trim(),
             includeClassRoll: `${includeClassRoll}`,
-            reportTitle: reportTitle.trim().toUpperCase(),
+            reportTitle: reportTitle?.trim().toUpperCase(),
             customFileName: (filename === '' ? "" : filename),
-            deviceType: userAgent.deviceType,
-            browserName: userAgent.browserName,
-            osName: userAgent.osName,
+            deviceType: userAgent?.deviceType,
+            browserName: userAgent?.browserName,
+            osName: userAgent?.osName,
         };
         console.table(primaryFormData);
 
@@ -167,6 +167,17 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
         localStorage.setItem("allPdfs", jsonString);
     }
 
+    const getSubjectData = () => {
+        if (allSubjects != null) return null;
+        setIsLoading(() => true);
+        fetch("./data/subjects.json").then(res => res.text()).then((_rawData) => {
+            let data = JSON.parse(_rawData);
+            // console.log(data);
+            setAllSubjects(() => { return data.subjects });
+            setIsLoading(() => false);
+        })
+    }
+
 
     return (<>
         {/* Download Modal */}
@@ -175,7 +186,7 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
         {/* Submit Form */}
         <form id="form-ca2" onSubmit={submitForm}>
             {/* <!-- Semester Name --> */}
-            <FormSemester semester={semester} setSemester={setSemester} />
+            <FormSemester semester={semester} setSemester={setSemester} allSubjects={allSubjects} />
 
             {/* <!-- Student Name --> */}
             <FormName name={studentName} setName={setStudentName} />
@@ -184,13 +195,13 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
             <FormMakautRoll makautRoll={makautRoll} setMakautRoll={setMakautRoll} />
 
             {/* <!-- Class roll number --> */}
-            <FormClassRoll classRoll={classRoll} setClassRoll={setClassRoll} semester={semester} includeClassRoll={includeClassRoll} setIncludeClassRoll={setIncludeClassRoll} />
+            <FormClassRoll classRoll={classRoll} setClassRoll={setClassRoll} semester={semester} includeClassRoll={includeClassRoll} setIncludeClassRoll={setIncludeClassRoll} allSubjects={allSubjects} />
 
             {/* <!-- Report Title --> */}
             <FormReportTitle reportTitle={reportTitle} setReportTitle={setReportTitle} />
 
             {/* <!-- Subject Name with Subject Code --> */}
-            <FormSubject subject={subject} setSubject={setSubject} semester={semester} classRoll={classRoll} />
+            <FormSubject subject={subject} setSubject={setSubject} semester={semester} classRoll={classRoll} _allSubjects={allSubjects} />
 
             {/* <!-- Optional File name --> */}
             <FormOptionalFilename filename={filename} setFilename={setFilename} />

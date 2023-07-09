@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import subjects from '../../public/data/subjects';
 
-const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, setIncludeClassRoll }) => {
+const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, setIncludeClassRoll, allSubjects }) => {
     const classRoll1 = useRef(null);
     const classRoll2 = useRef(null);
     const classRoll3 = useRef(null);
@@ -11,9 +10,9 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, se
     const [rollNumber, setRollNumber] = useState("")
 
     const getDepartments = () => {
-        if (semester == "") return;
+        if (semester == "" || allSubjects == null) return;
 
-        let semesterWiseDepartments = subjects[semester];
+        let semesterWiseDepartments = allSubjects[semester];
         let departmentList = [];
         for (let key in semesterWiseDepartments) {
             departmentList.push(key);
@@ -23,9 +22,9 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, se
 
     useEffect(() => {
         getDepartments();
-    }, [semester])
+    }, [semester, allSubjects])
 
-    
+
     useEffect(() => {
         if (classRoll.split("-")[2] == "")
             setRollNumber("");
@@ -53,7 +52,7 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, se
         setIncludeClassRoll((oldValue) => !oldValue)
     }
 
-
+ 
     return (
         <div className="my-3">
             <label htmlFor="cRoll3" className="form-label">Your Class Roll Number &nbsp; [ <span id="displayRoll">{classRoll}</span> ]</label>

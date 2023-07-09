@@ -1,71 +1,47 @@
 import React, { useEffect, useRef, useState } from 'react'
-import subjects from '../../public/data/subjects';
 
-const FormSubject = ({ subject, setSubject, semester, classRoll }) => {
+const FormSubject = ({ subject, setSubject, semester, classRoll, _allSubjects }) => {
     const inputRef = useRef(null);
     const elementId = "submitFormMakautRoll";
 
     const [allSubjects, setAllSubjects] = useState([]);
-    const [department, setDepartment] = useState("")
 
-    const getAllSubjects = () => {
-        if (department == "") return;
-        let semesterWiseSubjects = subjects[semester];
-        let departmentWiseSubjects = semesterWiseSubjects[department];
+    const getSubjects = () => {
+        if (semester == "") return;
 
-        setAllSubjects(() => { return departmentWiseSubjects });
+        let allDataForThisSemester = _allSubjects[semester];
+        let _department = String(classRoll).split("-")[1];
+        let subjectsForThisDepartment = allDataForThisSemester[_department];
 
-        let fullSubject = `${departmentWiseSubjects[0].name},${departmentWiseSubjects[0].code}`
-        setSubject(() => fullSubject)
+        if (subjectsForThisDepartment === undefined) {
+            let firstDepartment = "";
+            for (let item in allDataForThisSemester) {
+                firstDepartment = `${item}`;
+                break;
+            }
+
+            subjectsForThisDepartment = allDataForThisSemester[firstDepartment];
+        }
+
+        setAllSubjects(() => subjectsForThisDepartment);
+
+        let firstSubject = `${subjectsForThisDepartment[0]?.name},${subjectsForThisDepartment[0]?.code}`;
+        setSubject(() => firstSubject);
     }
 
-    const extractDepartment = () => {
-        let arr = classRoll.split("-");
-        setDepartment(() => { return arr[1] });
-        // getAllSubjects();
-    }
 
     useEffect(() => {
-        if (department !== "") {
-            getAllSubjects();
-        }
-    }, [department])
+        if (semester == "" || String(classRoll).includes("-") === false || _allSubjects === null) return;
 
-    useEffect(() => {
-        if (department !== "") {
-            extractDepartment();
-        }
-    }, [classRoll])
+        getSubjects();
 
-    useEffect(() => {
-        if (semester !== "") {
-            getAllSubjects();
-        }
-    }, [semester])
+    }, [semester, classRoll])
 
-    useEffect(() => {
-        if (subject == "" && allSubjects.length != 0)
-            setSubject(() => `${allSubjects[0].name},${allSubjects[0].code}`)
-    }, [subject])
-
-
-    useEffect(() => {
-        return () => {
-            extractDepartment();
-            getAllSubjects();
-        }
-    }, [])
-
-    const onChange = () => {
-        setSubject(() => {
-            return inputRef.current.value
-        })
-    }
 
     return (
         <div className="my-3">
             <label htmlFor="subjectCode" className="form-label">Select Subject</label>
-            <select ref={inputRef} onChange={onChange} className="form-select" id="subjectCode" value={(allSubjects.length == 0) ? "null" : subject} required={true}>
+            <select ref={inputRef} className="form-select" id="subjectCode" value={(allSubjects.length == 0) ? "null" : subject} required={true} readOnly>
                 {
                     (allSubjects.length == 0) &&
                     <option value="null" disabled={true}>No Subject Found</option>
