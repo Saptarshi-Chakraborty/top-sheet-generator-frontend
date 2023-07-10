@@ -20,7 +20,7 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
     const [studentName, setStudentName] = useState("");
     const [makautRoll, setMakautRoll] = useState("");
     const [classRoll, setClassRoll] = useState("22-CSE-");
-    const [includeClassRoll, setIncludeClassRoll] = useState(false)
+    const [includeClassRoll, setIncludeClassRoll] = useState(true)
     const [reportTitle, setReportTitle] = useState("");
     const [subject, setSubject] = useState("");
     const [semester, setSemester] = useState("");
