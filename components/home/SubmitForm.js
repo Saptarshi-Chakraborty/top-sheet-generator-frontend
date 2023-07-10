@@ -206,7 +206,7 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
             {/* <!-- Optional File name --> */}
             <FormOptionalFilename filename={filename} setFilename={setFilename} />
 
-            <span className="text-danger">*(Please re-check every field before submit)</span>
+            <span className="text-danger">*(Please recheck every field before submit)</span>
 
             {/* <!-- Submit Button --> */}
             <div className="my-3 text-center">
