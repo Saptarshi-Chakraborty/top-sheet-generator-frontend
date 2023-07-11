@@ -4,10 +4,11 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, se
     const classRoll1 = useRef(null);
     const classRoll2 = useRef(null);
     const classRoll3 = useRef(null);
-    const checkBoxRef = useRef(null)
+    const checkBoxRef = useRef(null);
+    const defaultValueFilled = useRef(false);
 
     const [allDepartments, setAllDepartments] = useState([])
-    const [rollNumber, setRollNumber] = useState("")
+    const [rollNumber, setRollNumber] = useState("");
 
     const getDepartments = () => {
         if (semester == "" || allSubjects == null) return;
@@ -26,8 +27,10 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, se
 
 
     useEffect(() => {
-        if (classRoll.split("-")[2] == "")
+        if (classRoll.split("-")[2] == "") {
             setRollNumber("");
+            setDefaultClassRoll();
+        }
     }, [classRoll])
 
 
@@ -52,7 +55,42 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, se
         setIncludeClassRoll((oldValue) => !oldValue)
     }
 
- 
+    useEffect(() => {
+        setDefaultClassRoll();
+    }, [allDepartments])
+
+
+    const setDefaultClassRoll = () => {
+        if (defaultValueFilled.current == true) return;
+
+        const localJsonData = localStorage.getItem("allPdfs");
+        if (localJsonData === null) return;
+        // console.log(`localStorage: (${localJsonData})`);
+        if (allSubjects == null) return;
+        if (allDepartments.length == 0) return;
+        if (String(classRoll).split("-")[2] !== "") return;
+
+        let localData;
+        try {
+            localData = JSON.parse(localJsonData);
+            let firstData = localData[0];
+            const classRollArray = String(firstData.classRoll).split("-");
+            const newDefaultClassRoll = `${classRollArray[0]}-${classRollArray[1]}-`;
+            
+            if (allDepartments.includes(classRollArray[1]) === false) return;
+
+            classRoll1.current.value = classRollArray[0];
+            classRoll2.current.value = classRollArray[1];
+            setClassRoll(() => newDefaultClassRoll);
+            defaultValueFilled.current = true;
+
+        } catch (error) {
+            return;
+        }
+
+    }
+
+
     return (
         <div className="my-3">
             <label htmlFor="cRoll3" className="form-label">Your Class Roll Number &nbsp; [ <span id="displayRoll">{classRoll}</span> ]</label>

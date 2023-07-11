@@ -128,10 +128,14 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
     }
 
     function resetForm() {
-        setSemester("1st");
+        setSemester(semester);
         setStudentName("");
         setMakautRoll("");
-        setClassRoll("22-CSE-");
+
+        //set previous settings for class roll
+        let classRollArray = classRoll.split("-");
+        setClassRoll(`${classRollArray[0]}-${classRollArray[1]}-`);
+
         setIncludeClassRoll(true);
         setReportTitle("");
         setSubject("");

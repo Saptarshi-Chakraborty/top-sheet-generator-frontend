@@ -2,11 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 
 const FormSemester = ({ semester, setSemester, allSubjects }) => {
     const inputRef = useRef(null);
-    const elementId = "submitFormSemesterField";
+    const defaultValueFilled = useRef(false);
 
     const [allSemester, setAllSemester] = useState([])
     const [_subjects, _setSubjects] = useState(null);
 
+    const elementId = "submitFormSemesterField";
+
+    
     const getAllSemester = () => {
         if (allSubjects === null) return;
 
@@ -28,8 +31,10 @@ const FormSemester = ({ semester, setSemester, allSubjects }) => {
     }
 
     useEffect(() => {
-        if (allSubjects !== null)
+        if (allSubjects !== null) {
             getAllSemester();
+            setDefaultSemester();
+        }
 
     }, [allSubjects])
 
@@ -39,6 +44,27 @@ const FormSemester = ({ semester, setSemester, allSubjects }) => {
         })
     }
 
+    const setDefaultSemester = () => {
+        if (defaultValueFilled.current == true) return;
+
+        const localJsonData = localStorage.getItem("allPdfs");
+        if (localJsonData === null) return;
+        if (allSubjects == null) return;
+        if (allSemester.length == 0) return;
+
+        let localData;
+        try {
+            localData = JSON.parse(localJsonData);
+            let firstData = localData[0];
+
+            if (allSemester.includes(firstData.semester) === false) return;
+
+            setSemester(() => firstData.semester);
+            defaultValueFilled.current = true;
+        } catch (error) {
+            return;
+        }
+    }
 
     return (
         <div className="my-3">

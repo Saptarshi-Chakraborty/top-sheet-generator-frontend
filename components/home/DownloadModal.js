@@ -6,8 +6,6 @@ const DownloadModal = ({ pdfName, downloadUrl, modalData, setModalData, isLoadin
     const [disableButtons, setDisableButtons] = useState(true)
 
     useEffect(() => {
-        console.log(`pdfName: (${pdfName})`)
-        console.log(modalData);
         if (modalData.dataLoaded === false) {
             showModalButtonRef.current.click();
             setDisableButtons(() => true);
