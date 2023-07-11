@@ -20,12 +20,12 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
     const [studentName, setStudentName] = useState("");
     const [makautRoll, setMakautRoll] = useState("");
     const [classRoll, setClassRoll] = useState("22-CSE-");
-    const [includeClassRoll, setIncludeClassRoll] = useState(false)
+    const [includeClassRoll, setIncludeClassRoll] = useState(true)
     const [reportTitle, setReportTitle] = useState("");
     const [subject, setSubject] = useState("");
     const [semester, setSemester] = useState("");
     const [filename, setFilename] = useState("");
-    const [modalData, setModalData] = useState({ pdfName: "", downloadUrl: "" })
+    const [modalData, setModalData] = useState({ pdfName: "", downloadUrl: "", dataLoaded: null })
     const [allSubjects, setAllSubjects] = useState(null)
 
 
@@ -43,6 +43,7 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
         e.preventDefault();
         setIsLoading(true);
         console.log("Submitting Form...");
+        setModalData((oldvalues) => { return { ...oldvalues, dataLoaded: false } });
 
         // check custom filename conditions
         if (filename !== '' && String(filename)?.length <= 3) {
@@ -109,7 +110,7 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
             const pdfId = data.pdfId;
 
             window.location.replace(downloadUrl); // auto download the pdf
-            setModalData(() => { return { pdfName: pdfFileName, downloadUrl: downloadUrl } })
+            setModalData(() => { return { pdfName: pdfFileName, downloadUrl: downloadUrl, dataLoaded: true } })
             setIsLoading(false);
             addToLocalStorage(data.params, downloadUrl, previewUrl, pdfFileName, pdfId);
             resetForm();
@@ -131,7 +132,7 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
         setStudentName("");
         setMakautRoll("");
         setClassRoll("22-CSE-");
-        setIncludeClassRoll(false);
+        setIncludeClassRoll(true);
         setReportTitle("");
         setSubject("");
         setFilename("");
@@ -181,7 +182,7 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
 
     return (<>
         {/* Download Modal */}
-        <DownloadModal pdfName={modalData.pdfName} downloadUrl={modalData.downloadUrl} setModalData={setModalData} />
+        <DownloadModal pdfName={modalData.pdfName} downloadUrl={modalData.downloadUrl} modalData={modalData} setModalData={setModalData} isLoading={isLoading} />
 
         {/* Submit Form */}
         <form id="form-ca2" onSubmit={submitForm}>
