@@ -9,7 +9,7 @@ const FormSemester = ({ semester, setSemester, allSubjects }) => {
 
     const elementId = "submitFormSemesterField";
 
-    
+
     const getAllSemester = () => {
         if (allSubjects === null) return;
 
@@ -33,10 +33,15 @@ const FormSemester = ({ semester, setSemester, allSubjects }) => {
     useEffect(() => {
         if (allSubjects !== null) {
             getAllSemester();
-            setDefaultSemester();
         }
 
     }, [allSubjects])
+
+    useEffect(() => {
+        if (allSemester.length > 0)
+            setDefaultSemester();
+    }, [allSemester])
+
 
     const onChange = () => {
         setSemester(() => {
@@ -55,8 +60,9 @@ const FormSemester = ({ semester, setSemester, allSubjects }) => {
         let localData;
         try {
             localData = JSON.parse(localJsonData);
-            let firstData = localData[0];
-
+            const lengthOfLocalData = localData.length;
+            let firstData = localData[lengthOfLocalData - 1];
+            
             if (allSemester.includes(firstData.semester) === false) return;
 
             setSemester(() => firstData.semester);

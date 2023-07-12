@@ -9,10 +9,10 @@ const Navbar = () => {
             <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
                 <div className="container-fluid">
 
-                    <span className="navbar-brand">
+                    <Link className="navbar-brand" href="/">
                         <img src="./favicon.png" alt="FIEM" width="30" height="30" className="d-inline-block align-text-top" />
                         <b>&nbsp; TOP&nbsp; SHEET&nbsp; GENERATOR</b>
-                    </span>
+                    </Link>
 
                     {/* Hamburger for Small Screen Navigation */}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

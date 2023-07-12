@@ -65,7 +65,7 @@ const DownloadModal = ({ pdfName, downloadUrl, modalData, setModalData, isLoadin
                     <div className="modal-body">
                         <p className="text-center fw-bold fs-5">❤ Thank You for using this tool ❤</p>
                         {/* <p className="text-center fw-bold fs-5">❤ Thank You for using this tool 😀</p> */}
-                        <p className="text-muted">As we use free server of Google, it takes 10-15 seconds to start downloading. Please wait for some time.</p>
+                        <p className="text-muted">It takes 10-15 seconds to generate the Top Sheet. Please wait for some time.</p>
 
                         <hr />
                         <p className="text-danger m-0">

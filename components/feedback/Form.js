@@ -66,7 +66,7 @@ const Form = () => {
                 return;
             }
 
-            toast.success("Your feedback is submitted successfully. Thank You 😀")
+            toast.success("Your Message is submitted successfully. Thank You 😀")
 
             setIsLoading(false);
             resetForm();
@@ -155,12 +155,12 @@ const Form = () => {
             <div className="my-3 text-center">
                 {
                     (isLoading == false) ?
-                        <button id="submitBtn" type="submit" className="btn btn-lg btn-outline-dark">SUBMIT FEEDBACK</button>
+                        <button id="submitBtn" type="submit" className="btn btn-lg btn-outline-dark">SUBMIT</button>
                         :
                         <button className="btn btn-lg btn-outline-dark" type="button" disabled>
                             <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             &nbsp;
-                            Loading...
+                            Submitting...
                         </button>
                 }
             </div>

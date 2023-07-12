@@ -73,10 +73,12 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, se
         let localData;
         try {
             localData = JSON.parse(localJsonData);
-            let firstData = localData[0];
+            const lengthOfLocalData = localData.length;
+            let firstData = localData[lengthOfLocalData - 1];
+
             const classRollArray = String(firstData.classRoll).split("-");
             const newDefaultClassRoll = `${classRollArray[0]}-${classRollArray[1]}-`;
-            
+
             if (allDepartments.includes(classRollArray[1]) === false) return;
 
             classRoll1.current.value = classRollArray[0];
