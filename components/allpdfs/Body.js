@@ -9,6 +9,7 @@ const Body = () => {
     useEffect(() => {
         if (allPdFs.length != 0) return;
         let allPdfsArray = getLocalStorageData("allPdfs");
+        allPdfsArray.reverse();
         setAllPdFs(() => allPdfsArray);
     }, []);
 
