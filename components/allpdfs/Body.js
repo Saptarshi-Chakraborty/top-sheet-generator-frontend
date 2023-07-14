@@ -19,7 +19,7 @@ const Body = () => {
             {
                 (allPdFs.length > 0) ?
                     <>
-                        <h1 className='text-center my-3 fs-2'>All Your Top Sheets</h1>
+                        <h3 className='text-center my-3'>All Your Top Sheets</h3>
                         <AllPdfs allPdfs={allPdFs} />
                     </>
                     :
