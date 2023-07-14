@@ -39,6 +39,10 @@ const Navbar = () => {
                                     <Link className="nav-link active" aria-current="page" href="/feedback">Feedback</Link>
                                 </li>
 
+                                <li className="nav-item">
+                                    <Link className="nav-link active" target='_blank' aria-current="page" href="https://www.termsfeed.com/live/17e652a8-0a04-4484-a85d-af50b6e4fbcc">Privacy Policy</Link>
+                                </li>
+
                             </ul>
                         </div>
                     </div>

@@ -12,7 +12,7 @@ export default function Home() {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Create your top sheet for CA2 without any headache in just 10 seconds. Absoulately free" />
-        <meta name="keywords" content="MAKAUT, FIEM, CA2 Exam, CA2 report"/>
+        <meta name="keywords" content="MAKAUT, FIEM, CA2 Exam, CA2 report" />
 
         {/* <!-- OG Meta tags --> */}
         <meta property="og:site_name" content="Top Sheet Generator for CA2 Report - FIEM" />

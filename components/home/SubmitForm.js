@@ -153,7 +153,7 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
 
 
         allPdfs.push({
-            studentName: studentDetails.name,
+            studentName: studentDetails.name.toUpperCase(),
             makautRoll: studentDetails.makautRoll,
             classRoll: studentDetails.classRoll,
             reportTitle: studentDetails.reportTitle,
