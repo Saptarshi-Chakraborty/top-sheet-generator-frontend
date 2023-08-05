@@ -45,7 +45,7 @@ const draftSubjects = {
             },
 
         ],
-        "ME": [
+        "CSDS": [
             {
                 name: "Chemistry-I",
                 code: "BS-CH101"
@@ -60,7 +60,7 @@ const draftSubjects = {
             },
 
         ],
-        "CSDS": [
+        "ME": [
             {
                 name: "Chemistry-I",
                 code: "BS-CH101"
@@ -164,7 +164,7 @@ const draftSubjects = {
             },
 
         ],
-        "ME": [
+        "CSDS": [
             {
                 name: "Physics-I",
                 code: "BS-PH201"
@@ -183,7 +183,7 @@ const draftSubjects = {
             },
 
         ],
-        "CSDS": [
+        "ME": [
             {
                 name: "Physics-I",
                 code: "BS-PH201"
@@ -314,6 +314,59 @@ const draftSubjects = {
                 code: "BS-M301"
             },
         ],
+        "CSDS": [
+            {
+                name: "Analog & Digital Electronics",
+                code: "ESC301"
+            },
+            {
+                name: "Data Structure & Algorithms",
+                code: "PCC-CS301"
+            },
+            {
+                name: "Computer Organization",
+                code: "PCC-CS302"
+            },
+            {
+                name: "Introduction to Data Science",
+                code: "PCC-DS301"
+            },
+            {
+                name: "Mathematics-III",
+                code: "BSC 301"
+            },
+            {
+                name: "Economics for Engineers",
+                code: "HSMC 301"
+            },
+
+        ],
+        "ME": [
+            {
+                name: "Engineering Mechanics",
+                code: "ES-ME301"
+            },
+            {
+                name: "Basic Electronics Engineering",
+                code: "ES-ECE301"
+            },
+            {
+                name: "Mathematics",
+                code: "BS-M301"
+            },
+            {
+                name: "Biology",
+                code: "BS-BIO301"
+            },
+            {
+                name: "Thermodynamics",
+                code: "PC-ME301"
+            },
+            {
+                name: "Manufacturing Processes",
+                code: "PC-ME302"
+            },
+        ],
     },
     "4th": {
         "CSE": [
@@ -394,7 +447,59 @@ const draftSubjects = {
                 name: "Biology for Engineers",
                 code: "BS-B401"
             },
-        ]
+        ],
+        "CSDS": [
+            {
+                name: "Discrete Mathematics",
+                code: "PCC-CS401"
+            },
+            {
+                name: "Database Management System",
+                code: "PCC-DS401"
+            },
+            {
+                name: "Formal Language & Automata Theory",
+                code: "PCC-CS403"
+            },
+            {
+                name: "Design & Analysis of Algorithms",
+                code: "PCC-CS404"
+            },
+            {
+                name: "Data Mining",
+                code: "PCC-DS 402"
+            },
+            {
+                name: "Biology",
+                code: "BSC 401"
+            },
+            {
+                name: "Environmental Sciences",
+                code: "MC401"
+            },
+        ],
+        "ME": [
+            {
+                name: "Materials Engineering",
+                code: "ESME401"
+            },
+            {
+                name: "Applied Thermodynamics",
+                code: "PC-ME401"
+            },
+            {
+                name: "Fluid Mechanics & Fluid Machines",
+                code: "PC-ME402"
+            },
+            {
+                name: "Strength of Materials",
+                code: "PC-ME403"
+            },
+            {
+                name: "Metrology andInstrumentation",
+                code: "PC-ME404"
+            },
+        ],
     },
     "5th": {
         "CSE": [
@@ -477,6 +582,74 @@ const draftSubjects = {
             {
                 name: "Program Elective I",
                 code: "PE-EC505"
+            },
+        ],
+        "CSDS": [
+            {
+                name: "Software Engineering",
+                code: "ESC501"
+            },
+            {
+                name: "Statistics for Data Science",
+                code: "PCC-DS501"
+            },
+            {
+                name: "Operating Systems",
+                code: "PCC-CS502"
+            },
+            {
+                name: "Object Oriented Programming",
+                code: "PCC-CS503"
+            },
+            {
+                name: "Introduction to Industrial Management",
+                code: "HSMC-501"
+            },
+            {
+                name: "Augmented Reality, Virtual Reality & Mixed Reality",
+                code: "PCC-CSD501"
+            },
+            {
+                name: "Digital Image Processing",
+                code: "PEC-CSD501A"
+            },
+            {
+                name: "Creative Thinking Process and Design",
+                code: "PEC-CSD501B"
+            },
+            {
+                name: "GPU Computing",
+                code: "PEC-CSD501C"
+            },
+            {
+                name: "Constitution of India",
+                code: "MC-CS501A"
+            },
+            {
+                name: "Essence of Indian Knowledge Tradition",
+                code: "MC-CS501B"
+            },
+        ],
+        "ME": [
+            {
+                name: "Heat Transfer",
+                code: "PC-ME501"
+            },
+            {
+                name: "Solid Mechanics",
+                code: "PC-ME502"
+            },
+            {
+                name: "Kinematics & Theory of Machines",
+                code: "PC-ME503"
+            },
+            {
+                name: "Effective Technical Communication",
+                code: "HM-HU501"
+            },
+            {
+                name: "Essence of Indian Knowledge Tradition",
+                code: "MC501"
             },
         ],
     },
@@ -563,6 +736,94 @@ const draftSubjects = {
                 code: "HS-HU601"
             },
         ],
+        "CSDS": [
+            {
+                name: "Games and App Design",
+                code: "PEC-CSD601"
+            },
+            {
+                name: "Artificial Intelligence & Machine Learning",
+                code: "PCC-CSD602"
+            },
+            {
+                name: "Human Computer Interaction",
+                code: "PEC-CSD601A"
+            },
+            {
+                name: "Data Visualization",
+                code: "PEC-CSD601B"
+            },
+            {
+                name: "CAD & CAM",
+                code: "PEC-CSD601C"
+            },
+            {
+                name: "Wearable Devices, Interactions andApplications",
+                code: "PEC-CSD602A"
+            },
+            {
+                name: "Interactive Interface Design",
+                code: "PEC-CSD602B"
+            },
+            {
+                name: "Design Processes & Perspectives",
+                code: "PEC-CSD602C"
+            },
+            {
+                name: "Robotics",
+                code: "OEC-CSD601A"
+            },
+            {
+                name: "Computer Vision",
+                code: "OEC-CSD601B"
+            },
+            {
+                name: "Wireless Sensor Networks",
+                code: "OEC-CSD601C"
+            },
+            {
+                name: "Internet of Things",
+                code: "OEC-CSD601D"
+            },
+            {
+                name: "Research Methodology",
+                code: "PROJ-CSD 601"
+            },
+        ],
+        "ME": [
+            {
+                name: "Manufacturing Technology",
+                code: "PC-ME601"
+            },
+            {
+                name: "Design of Machine Elements",
+                code: "PC-ME602"
+            },
+            {
+                name: "Operations Research",
+                code: "HM-HU601"
+            },
+            {
+                name: "Constitution of India",
+                code: "MC601"
+            },
+            {
+                name: "Mechatronics",
+                code: "PE-ME602G"
+            },
+            {
+                name: "Turbomachinery",
+                code: "PE-ME602C"
+            },
+            {
+                name: "Internal Combustion Engines and Gas Turbines",
+                code: "PE-ME601A"
+            },
+            {
+                name: "",
+                code: ""
+            },
+        ],
     },
     "7th": {
         "CSE": [
@@ -639,6 +900,90 @@ const draftSubjects = {
                 code: "HS-HU701"
             },
         ],
+        "CSDS": [
+            {
+                name: "Deep Learning",
+                code: "PEC-CSD701A"
+            },
+            {
+                name: "Prototyping Interactive Systems",
+                code: "PEC-CSD701B"
+            },
+            {
+                name: "Quantum Computing",
+                code: "PEC-CSD701C"
+            },
+            {
+                name: "Multi-agent Intelligent Systems",
+                code: "PEC-CSD701D"
+            },
+            {
+                name: "Blockchain Technology",
+                code: "PEC-CSD702A"
+            },
+            {
+                name: "Information Security",
+                code: "PEC-CSD702B"
+            },
+            {
+                name: "Cyber Security Laws and Ethics",
+                code: "PEC-CSD702C"
+            },
+            {
+                name: "Cloud Computing",
+                code: "PEC-CSD702D"
+            },
+            {
+                name: "Big Data Analytics",
+                code: "OEC-CSD701A"
+            },
+            {
+                name: "Aesthetics and Art",
+                code: "OEC-CSD701B"
+            },
+            {
+                name: "Introduction to Philosophical Thoughts",
+                code: "OEC-CSD701C"
+            },
+            {
+                name: "Project Management and Entrepreneurship",
+                code: "HSMC 701"
+            },
+        ],
+        "ME": [
+            {
+                name: "Advanced Manufacturing Technology",
+                code: "PC-ME701"
+            },
+            {
+                name: "Advanced Welding Technology",
+                code: "PE-ME701H"
+            },
+            {
+                name: "Automobile Engineering",
+                code: "PE-ME701A"
+            },
+            {
+                name: "CAD/CAM",
+                code: "PE-ME702J"
+            },
+            {
+                name: "Selection and Testing of Materials",
+                code: "PE-ME-702E"
+            },
+            {
+                name: "Economics for Engineers",
+                code: "HM-HU701"
+            },
+            {
+                name: "Machine Learning",
+                code: "OE-ME701H"
+            },
+            {
+                name: "Water Resource Engineering",
+                code: "OE-ME701I"
+            },
+        ],
     },
     "8th": {
         "CSE": [
@@ -701,6 +1046,82 @@ const draftSubjects = {
             {
                 name: "Open Elective - 5",
                 code: "OE-EC804"
+            },
+        ],
+        "CSDS": [
+            {
+                name: "Inclusive Design, Universal Design & Accessibility",
+                code: "PEC-CSD801A"
+            },
+            {
+                name: "Multimedia Systems",
+                code: "PEC-CSD801B"
+            },
+            {
+                name: "Web Design & Development",
+                code: "PEC-CSD801C"
+            },
+            {
+                name: "Visual Design & Communication",
+                code: "OEC-CSD801A"
+            },
+            {
+                name: "Compiler Design",
+                code: "OEC- CSD801B"
+            },
+            {
+                name: "Mobile Computing",
+                code: "OEC-CS801C"
+            },
+            {
+                name: "Natural Language Processing",
+                code: "OEC-CSD801D"
+            },
+            {
+                name: "Optical Networking",
+                code: "OEC- CSD802A"
+            },
+            {
+                name: "3D Printing and Design",
+                code: "OEC-CSD802B"
+            },
+            {
+                name: "Micro-electronics and VLSI Design",
+                code: "OEC-CSD802C"
+            },
+        ],
+        "ME": [
+            {
+                name: "Analysis And Performance Of Fluid Machines",
+                code: "PEME 801A"
+            },
+            {
+                name: "Power Plant Engineering",
+                code: "PEME 801B"
+            },
+            {
+                name: "Maintenance Engineering",
+                code: "PEME 802I"
+            },
+            {
+                name: "3D Printing and Design",
+                code: "PE-ME802F"
+            },
+            {
+                name: "Industrial Pollution and Control",
+                code: "OEME 801D"
+            },
+            {
+                name: "Waste to Energy: An Overview",
+                code: "OEME 801F"
+            },
+            {
+                name: "Data Sciences",
+                code: "OEME 802L"
+            },
+            {
+                name: "Automation and Control",
+                code: "OEME 802G"
             },
         ],
     },
