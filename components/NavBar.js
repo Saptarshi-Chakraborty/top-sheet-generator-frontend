@@ -36,6 +36,10 @@ const Navbar = () => {
                                 </li>
 
                                 <li className="nav-item">
+                                    <Link className="nav-link active" aria-current="page" href="/ca1">CA1 Exam</Link>
+                                </li>
+
+                                <li className="nav-item">
                                     <Link className="nav-link active" aria-current="page" href="/feedback">Feedback</Link>
                                 </li>
 

@@ -10,9 +10,10 @@ const Item = ({ data, index }) => {
         <div className="accordion-item">
             <h2 className="accordion-header">
                 <button className="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#card${data?.pdfId}`} aria-expanded="true" aria-controls={`card${data?.pdfId}`}>
-                    {data?.studentName} - {data?.subjectName}
+                    {data?.studentName} - {data?.subjectName} [{data?.ca}]
                 </button>
             </h2>
+
             {/* <div id="collapseOne" className="accordion-collapse collapse" data-bs-parent="#accordionExample"> */}
             <div id={`card${data?.pdfId}`} className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div className="accordion-body py-2">
@@ -30,6 +31,7 @@ const Item = ({ data, index }) => {
                     <p className='my-0 text-muted'>Generated at: {date}</p>
                 </div>
             </div>
+
         </div>
     )
 }

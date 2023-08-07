@@ -20,7 +20,7 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
     const [studentName, setStudentName] = useState("");
     const [makautRoll, setMakautRoll] = useState("");
     const [classRoll, setClassRoll] = useState("22-CSE-");
-    const [includeClassRoll, setIncludeClassRoll] = useState(true)
+    const [includeClassRoll, setIncludeClassRoll] = useState(false)
     const [reportTitle, setReportTitle] = useState("");
     const [subject, setSubject] = useState("");
     const [semester, setSemester] = useState("");
@@ -67,7 +67,7 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
             subjectCode: subjectArray[1]?.trim(),
             semester: semester?.trim(),
             includeClassRoll: `${includeClassRoll}`,
-            ca: "CA2",
+            ca: "CA1",
             reportTitle: reportTitle?.trim().toUpperCase(),
             customFileName: (filename === '' ? "" : filename),
             deviceType: userAgent?.deviceType,
@@ -82,6 +82,7 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
 
         let params = { method: "POST", body: formData };
 
+        // fetch(API.curentDeployment.url, params).then(res => res.text()).then((_rawData) => {
         fetch(API.curentDeployment.url, params).then(res => res.text()).then((_rawData) => {
             // console.log(_rawData);
             const data = JSON.parse(_rawData);
@@ -137,7 +138,7 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
         let classRollArray = classRoll.split("-");
         setClassRoll(`${classRollArray[0]}-${classRollArray[1]}-`);
 
-        setIncludeClassRoll(true);
+        setIncludeClassRoll(false);
         setReportTitle("");
         setSubject("");
         setFilename("");
