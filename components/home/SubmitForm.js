@@ -10,7 +10,7 @@ import FormSemester from '../FormPages/FormComponents/FormSemester';
 import FormSubject from '../FormPages/FormComponents/FormSubject';
 import { toast } from 'react-toastify';
 import { API } from '../../public/data/api';
-import DownloadModal from '../DownloadModal';
+import DownloadModal from '../FormPages/DownloadModal';
 import getUserAgentDetails from '../../utility/userAgent';
 
 const SubmitForm = ({ isLoading, setIsLoading }) => {

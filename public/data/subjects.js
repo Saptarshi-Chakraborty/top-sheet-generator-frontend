@@ -244,7 +244,7 @@ const draftSubjects = {
     "3rd": {
         "CSE": [
             {
-                name: "Analog and Digital Eletronics",
+                name: "Analog and Digital Electronics",
                 code: "ESC 301"
             },
             {
@@ -267,7 +267,7 @@ const draftSubjects = {
         ],
         "IT": [
             {
-                name: "Analog and Digital Eletronics",
+                name: "Analog and Digital Electronics",
                 code: "ESC 301"
             },
             {
@@ -1373,7 +1373,7 @@ const subjects = {
     "3rd": {
         "CSE": [
             {
-                name: "Analog and Digital Eletronics",
+                name: "Analog and Digital Electronics",
                 code: "ESC 301"
             },
             {
@@ -1396,7 +1396,7 @@ const subjects = {
         ],
         "IT": [
             {
-                name: "Analog and Digital Eletronics",
+                name: "Analog and Digital Electronics",
                 code: "ESC 301"
             },
             {
