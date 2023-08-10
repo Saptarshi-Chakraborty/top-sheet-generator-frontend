@@ -12,7 +12,7 @@ const Body = () => {
     return (
         <>
             <div>
-                <Link href="/ca1" class="alert alert-danger alert-dismissible fw-bold fade show p-1 mt-1 mb-0 d-block text-center text-decoration-none" role="alert">
+                <Link href="/ca1" className="alert alert-danger alert-dismissible fw-bold fade show p-1 mt-1 mb-0 d-block text-center text-decoration-none" role="alert">
                     🎉 Click here to Generate CA1 Top Sheets 🤩
                 </Link>
             </div>

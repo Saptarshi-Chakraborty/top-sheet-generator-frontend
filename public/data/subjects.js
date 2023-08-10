@@ -529,7 +529,7 @@ const draftSubjects = {
             },
             {
                 name: "Constitution of India",
-                code: "MC- CS501"
+                code: "MC-CS501"
             },
         ],
         "IT": [
@@ -580,8 +580,36 @@ const draftSubjects = {
                 code: "EC504"
             },
             {
-                name: "Program Elective I",
-                code: "PE-EC505"
+                name: "Effective Technical Communication",
+                code: "MC-HU501"
+            },
+            {
+                name: "Nano Electronics ",
+                code: "PE-EC505A"
+            },
+            {
+                name: "Speech and Audio Processing",
+                code: "PE-EC505B"
+            },
+            {
+                name: "Power Electronics",
+                code: "PE-EC505C"
+            },
+            {
+                name: "Scientific Computing",
+                code: "PE-EC505D"
+            },
+            {
+                name: "Soft Skill and Interpersonal Communication",
+                code: "OE-EC506A"
+            },
+            {
+                name: "Cyber Law & Intellectual Property Rights",
+                code: "OE-EC506B"
+            },
+            {
+                name: "Human Resource Management",
+                code: "OE-EC506C"
             },
         ],
         "CSDS": [
@@ -1443,7 +1471,172 @@ const subjects = {
                 code: "BS-M301"
             },
         ],
+        "CSDS": [
+            {
+                name: "Analog & Digital Electronics",
+                code: "ESC301"
+            },
+            {
+                name: "Data Structure & Algorithms",
+                code: "PCC-CS301"
+            },
+            {
+                name: "Computer Organization",
+                code: "PCC-CS302"
+            },
+            {
+                name: "Introduction to Data Science",
+                code: "PCC-DS301"
+            },
+            {
+                name: "Mathematics-III",
+                code: "BSC 301"
+            },
+            {
+                name: "Economics for Engineers",
+                code: "HSMC 301"
+            },
+
+        ],
+        "ME": [
+            {
+                name: "Engineering Mechanics",
+                code: "ES-ME301"
+            },
+            {
+                name: "Basic Electronics Engineering",
+                code: "ES-ECE301"
+            },
+            {
+                name: "Mathematics",
+                code: "BS-M301"
+            },
+            {
+                name: "Biology",
+                code: "BS-BIO301"
+            },
+            {
+                name: "Thermodynamics",
+                code: "PC-ME301"
+            },
+            {
+                name: "Manufacturing Processes",
+                code: "PC-ME302"
+            },
+        ],
     },
+    "5th:": {
+        "CSE": [
+            {
+                name: "Software Engineering",
+                code: "ESC501"
+            },
+            {
+                name: "Compiler Design",
+                code: "PCC-CS501"
+            },
+            {
+                name: "Operating Systems",
+                code: "PCC-CS502"
+            },
+            {
+                name: "Object Oriented Programming",
+                code: "PCC-CS503"
+            },
+            {
+                name: "Introduction to Industrial Management",
+                code: "HSMC-501"
+            },
+            {
+                name: "Artificial Intelligence",
+                code: "PEC-IT501B"
+            },
+            {
+                name: "Constitution of India",
+                code: "MC- CS501"
+            },
+        ],
+        "IT": [
+            {
+                name: "Software Engineering",
+                code: "ESC501"
+            },
+            {
+                name: "Compiler Design",
+                code: "PCC-CS501"
+            },
+            {
+                name: "Operating Systems",
+                code: "PCC-CS502"
+            },
+            {
+                name: "Object Oriented Programming",
+                code: "PCC-CS503"
+            },
+            {
+                name: "Introduction to Industrial Management",
+                code: "HSMC-501"
+            },
+            {
+                name: "Artificial Intelligence",
+                code: "PEC-IT501B"
+            },
+            {
+                name: "Constitution of India",
+                code: "MC-CS501"
+            },
+        ],
+        "ECE": [
+            {
+                name: "Electromagnetic Waves",
+                code: "EC501"
+            },
+            {
+                name: "Computer Architecture",
+                code: "EC502"
+            },
+            {
+                name: "Digital Communication & Stochastic Process",
+                code: "EC503"
+            },
+            {
+                name: "Digital Signal Processing",
+                code: "EC504"
+            },
+            {
+                name: "Effective Technical Communication",
+                code: "MC-HU501"
+            },
+            {
+                name: "Nano Electronics ",
+                code: "PE-EC505A"
+            },
+            {
+                name: "Speech and Audio Processing",
+                code: "PE-EC505B"
+            },
+            {
+                name: "Power Electronics",
+                code: "PE-EC505C"
+            },
+            {
+                name: "Scientific Computing",
+                code: "PE-EC505D"
+            },
+            {
+                name: "Soft Skill and Interpersonal Communication",
+                code: "OE-EC506A"
+            },
+            {
+                name: "Cyber Law & Intellectual Property Rights",
+                code: "OE-EC506B"
+            },
+            {
+                name: "Human Resource Management",
+                code: "OE-EC506C"
+            },
+        ],
+    }
 }
 
 export default subjects;
