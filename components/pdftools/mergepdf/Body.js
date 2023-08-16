@@ -11,6 +11,7 @@ const Body = () => {
 
     const [allPdfs, setAllPdfs] = useState([])
     const [mergedPdfFile, setMergedPdfFile] = useState(null)
+    const [customFileName, setCustomFileName] = useState("")
 
 
 
@@ -95,6 +96,7 @@ const Body = () => {
         // reset the input field after use
         fileInputRef.current.value = "";
 
+        setCustomFileName("");
         setAllPdfs(() => []);
     }
 
@@ -164,7 +166,11 @@ const Body = () => {
     function handleDownload() {
         if (mergedPdfFile === null) return;
         const fileName = `merged - ${new Date().getTime()}`
-        download(mergedPdfFile, fileName);
+
+        if (customFileName.length <= 3)
+            download(mergedPdfFile, fileName);
+        else
+            download(mergedPdfFile, customFileName);
 
         setTimeout(() => {
             resetFileInput();
@@ -174,7 +180,7 @@ const Body = () => {
 
     return (
         <div className="container my-3">
-            <h3 className="text-center mb-3 main-heading">Enter below details to generate your top sheet for CA2 exam</h3>
+            <h3 className="text-center mb-3 main-heading">Select your pdf files below to merge in one pdf</h3>
 
             <div id="upload-box">
 
@@ -185,8 +191,7 @@ const Body = () => {
 
 
                 {/* Action Buttons */}
-
-                <ActionButtonBox allPdfs={allPdfs} mergedPdfFile={mergedPdfFile} mergePdfs={mergePdfs} handleDownload={handleDownload} resetAll={resetAll} />
+                <ActionButtonBox allPdfs={allPdfs} mergedPdfFile={mergedPdfFile} mergePdfs={mergePdfs} handleDownload={handleDownload} resetAll={resetAll} fileName={customFileName} setFileName={setCustomFileName} />
 
             </div>
 
