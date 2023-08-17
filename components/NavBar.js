@@ -40,7 +40,7 @@ const Navbar = () => {
                                 </li>
 
                                 <li className="nav-item">
-                                    <Link className="nav-link active" aria-current="page" href="/pdftools/mergepdf">Merge PDF</Link>
+                                    <Link className="nav-link active" aria-current="page" href="/pdftools/pdf-merger">Merge PDF</Link>
                                 </li>
 
                                 <li className="nav-item">
