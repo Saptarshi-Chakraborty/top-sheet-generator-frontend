@@ -12,8 +12,8 @@ const FormOptionalFilename = ({ filename, setFilename }) => {
 
     return (
         <div className="my-3">
-            <label htmlFor="cName" className="form-label">PDF File Name <span className="text-muted">(optional)</span></label>
-            <input ref={inputRef} onChange={onChange} value={filename} type="text" className="form-control" id="cName" placeholder="Default filename = Your MAKAUT Roll" required={false} />
+            <label htmlFor="cName" className="form-label">Custom PDF File Name <span className="text-muted">(optional)</span></label>
+            <input ref={inputRef} onChange={onChange} value={filename} type="text" className="form-control" id="cName" required={false} />
         </div>
     )
 }

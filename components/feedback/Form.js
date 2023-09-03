@@ -66,7 +66,7 @@ const Form = () => {
                 return;
             }
 
-            toast.success("Your Message is submitted successfully. Thank You 😀")
+            toast.success("Thank You for your message 😀")
 
             setIsLoading(false);
             resetForm();
