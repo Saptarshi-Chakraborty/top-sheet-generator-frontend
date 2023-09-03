@@ -160,6 +160,7 @@ const Body = () => {
 
         const tempFile = await mergedPdf.save()
         setMergedPdfFile(() => tempFile);
+
     }
 
     function handleDownload() {
@@ -174,6 +175,10 @@ const Body = () => {
         setTimeout(() => {
             resetFileInput();
         }, 2500);
+    }
+
+    function handleFileNameChange(e) {
+        console.log(e.target.value);
     }
 
 
@@ -194,12 +199,27 @@ const Body = () => {
 
             </div>
 
-            <div id="show-pdf-box">
+            {
+                // If no pdf file is uploaded
+                (allPdfs.length === 0) &&
+                <h4 className='my-4'>No PDF File is selected</h4>
+            }
+
+            {
+                (allPdfs.length > 0) && (mergedPdfFile === null) &&
+                <div id="show-pdf-box">
+                    <ShowPdfs allPdfs={allPdfs} setAllPdfs={setAllPdfs} resetInputField={resetFileInput} />
+                </div>
+            }
+
+            <div>
                 {
-                    (allPdfs.length === 0) ?
-                        <h4 className='my-4'>No PDF File is selected</h4>
-                        :
-                        <ShowPdfs allPdfs={allPdfs} setAllPdfs={setAllPdfs} resetInputField={resetFileInput} />
+                    (mergedPdfFile != null) &&
+                    <div className="mb-3">
+                        <label htmlFor="customFileName" className="form-label">Custom File Name (optional)</label>
+                        <input value={customFileName} onChange={handleFileNameChange} type="text" autoComplete='off' className="form-control" id="customFileName" aria-describedby="basic-addon3 basic-addon4" />
+                        <button className="btn btn-success mt-2" onClick={handleDownload}>Download Merged PDF</button>
+                    </div>
                 }
             </div>
 

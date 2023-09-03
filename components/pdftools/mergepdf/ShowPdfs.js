@@ -47,7 +47,7 @@ const ShowPdfs = ({ allPdfs, setAllPdfs, resetInputField }) => {
     return (
         <div className='my-3 py-2'>
             <h4 className='mb-0'>Your PDF Files</h4>
-            <p className='text-mute mb-3'>( You can drag and rearrange your pdfs)</p>
+            <p className='text-mute mb-3'>( You can click the arrows and rearrange your pdfs )</p>
 
             <div className="card-container d-flex flex-column gap-2">
                 {
