@@ -39,8 +39,13 @@ const Navbar = () => {
                                     <Link className="nav-link active" aria-current="page" href="/ca1">CA1 Exam</Link>
                                 </li>
 
-                                <li className="nav-item">
-                                    <Link className="nav-link active" aria-current="page" href="/pdftools/pdf-merger">Merge PDF</Link>
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">PDF Tools</a>
+
+                                    <ul className="dropdown-menu">
+                                        <li><a className="dropdown-item" href="/pdftools/pdf-merger">Merge PDF</a></li>
+                                        <li><a className="dropdown-item" href="/pdftools/pdf-compressor">Compress PDF</a></li>
+                                    </ul>
                                 </li>
 
                                 <li className="nav-item">

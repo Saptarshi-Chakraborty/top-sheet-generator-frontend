@@ -11,11 +11,11 @@ const Body = () => {
 
     return (
         <>
-            <div>
+            {/* <div className='notice'>
                 <Link href="/ca1" className="alert alert-danger alert-dismissible fw-bold fade show p-1 mt-1 mb-0 d-block text-center text-decoration-none" role="alert">
                     🎉 Click here to Generate CA1 Top Sheets 🤩
                 </Link>
-            </div>
+            </div> */}
 
             <div className="container my-3">
                 <h3 className="text-center mb-3 main-heading">Enter below details to generate your top sheet for CA2 exam</h3>

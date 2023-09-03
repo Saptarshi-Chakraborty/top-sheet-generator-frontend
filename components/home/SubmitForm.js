@@ -45,6 +45,13 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
         console.log("Submitting Form...");
         setModalData((oldvalues) => { return { ...oldvalues, dataLoaded: false } });
 
+        // Check for the first years
+        if (semester !== "1st" && makautRoll == "") {
+            toast.error("Please enter your MAKAUT roll");
+            return;
+        }
+
+
         // check custom filename conditions
         if (filename !== '' && String(filename)?.length <= 3) {
             toast.error("Please give a valid name");
@@ -66,7 +73,7 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
             subjectName: subjectArray[0]?.trim(),
             subjectCode: subjectArray[1]?.trim(),
             semester: semester?.trim(),
-            includeClassRoll: `${includeClassRoll}`,
+            includeClassRoll: `${(semester === "1st" ? "true" : includeClassRoll)}`,
             ca: "CA2",
             reportTitle: reportTitle?.trim().toUpperCase(),
             customFileName: (filename === '' ? "" : filename),
@@ -75,6 +82,7 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
             osName: userAgent?.osName,
         };
         console.table(primaryFormData);
+        // return;
 
         let formData = new FormData();
         for (let key in primaryFormData)
@@ -199,10 +207,10 @@ const SubmitForm = ({ isLoading, setIsLoading }) => {
             <FormName name={studentName} setName={setStudentName} />
 
             {/* <!-- MAKAUT Roll --> */}
-            <FormMakautRoll makautRoll={makautRoll} setMakautRoll={setMakautRoll} />
+            <FormMakautRoll makautRoll={makautRoll} setMakautRoll={setMakautRoll} semester={semester} />
 
             {/* <!-- Class roll number --> */}
-            <FormClassRoll classRoll={classRoll} setClassRoll={setClassRoll} semester={semester} includeClassRoll={includeClassRoll} setIncludeClassRoll={setIncludeClassRoll} allSubjects={allSubjects} />
+            <FormClassRoll classRoll={classRoll} setClassRoll={setClassRoll} semester={semester} includeClassRoll={includeClassRoll} setIncludeClassRoll={setIncludeClassRoll} allSubjects={allSubjects} makautRoll={makautRoll} />
 
             {/* <!-- Report Title --> */}
             <FormReportTitle reportTitle={reportTitle} setReportTitle={setReportTitle} />

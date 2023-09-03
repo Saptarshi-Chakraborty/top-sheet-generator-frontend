@@ -1,9 +1,9 @@
 export const API = {
     curentDeployment: {
-        url: "https://script.google.com/macros/s/AKfycbwN4wmXq0c1elNvxjEohL2OKN-U9PqaOL-l1kasoVmZSArh-qKlABZCRRwyXW5mz1sL/exec",
-        version: "Version 40",
-        deploymentId: "AKfycbwN4wmXq0c1elNvxjEohL2OKN-U9PqaOL-l1kasoVmZSArh-qKlABZCRRwyXW5mz1sL",
-        time: "Aug 9, 11:33 PM",
+        url: "https://script.google.com/macros/s/AKfycbyJwI9U0gCSrzyKiW2xRp1cKEMD8KuXs5e1detlQNdnxf7IUMgOb97hkid4DEGdmftc/exec",
+        version: "Version 42",
+        deploymentId: "AKfycbyJwI9U0gCSrzyKiW2xRp1cKEMD8KuXs5e1detlQNdnxf7IUMgOb97hkid4DEGdmftc",
+        time: "Sep 3, 12:35 PM",
     },
     testDeployment: {
         url: "https://script.google.com/macros/s/AKfycbwbSrLbDIX9PxcZHtHKQV55H3-OfnjTEA71mjo8lGk/dev",

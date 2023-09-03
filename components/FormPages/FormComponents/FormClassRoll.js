@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, setIncludeClassRoll, allSubjects }) => {
+const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, setIncludeClassRoll, allSubjects, makautRoll }) => {
     const classRoll1 = useRef(null);
     const classRoll2 = useRef(null);
     const classRoll3 = useRef(null);
@@ -123,7 +123,7 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, se
             </div>
 
             <div className="form-check">
-                <input ref={checkBoxRef} onChange={updateCheckBox} className="form-check-input" type="checkbox" id="includeClassRollCheckbox" checked={includeClassRoll} />
+                <input ref={checkBoxRef} onChange={updateCheckBox} className="form-check-input" type="checkbox" id="includeClassRollCheckbox" checked={includeClassRoll} disabled={(semester == "1st" && makautRoll == "")} />
                 <label className="form-check-label" htmlFor="includeClassRollCheckbox">Add class roll in the Top Sheet</label>
             </div>
         </div>

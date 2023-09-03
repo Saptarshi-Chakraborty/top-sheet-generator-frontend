@@ -7,7 +7,6 @@ import ActionButtonBox from './ActionButtonBox'
 const Body = () => {
 
     const fileInputRef = useRef(null)
-    const showContainerRef = useRef(null)
 
     const [allPdfs, setAllPdfs] = useState([])
     const [mergedPdfFile, setMergedPdfFile] = useState(null)
