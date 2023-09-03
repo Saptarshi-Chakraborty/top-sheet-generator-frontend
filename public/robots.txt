@@ -6,4 +6,4 @@ User-agent: *
 Allow: /
 Disallow: /allpdfs
 
-Sitemap: https://ca2-top-sheet.pages.dev/sitemap.xml
+Sitemap: https://top-sheet-generator.pages.dev/sitemap.xml

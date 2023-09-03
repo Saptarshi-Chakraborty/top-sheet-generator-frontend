@@ -11,24 +11,21 @@ export default function Home() {
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Create your top sheet for CA2 without any headache in just 10 seconds. Absoulately free" />
-        <meta name="keywords" content="MAKAUT, FIEM, CA2 Exam, CA2 report" />
+        <meta name="description" content="Generate CA2 assignment top sheets quickly for FIEM with our Top Sheet Generator. Create professional-looking front pages in just 10 seconds. Absoulately Free !" />
+        <meta name="keywords" content="Top Sheet Generator, CA2 assignment front page, FIEM assignment, easy assignment generator, FIEM Top Sheet Generator, MAKAUT CA2 Top Sheet Generator, CA2 Assignmet Top Sheet" />
 
         {/* <!-- OG Meta tags --> */}
-        <meta property="og:site_name" content="Top Sheet Generator for CA2 Report - FIEM" />
-        <meta property="og:title" content="Easily create Top Sheet for CA2 in just 10 seconds" />
-        <meta property="og:description" content="Create your top sheet for CA2 without any headache in just 10 seconds. Absoulately free" />
-        <meta property="og:url" content="https://ca2-top-sheet.pages.dev/" />
-        <meta property="og:image" itemProp="image" content="https://ca2-top-sheet.pages.dev/img/ogimage.png" />
+        <meta property="og:site_name" content="Top Sheet Generator" />
+        <meta property="og:title" content="Top Sheet Generator - Easy CA2 Top Sheet Generator for FIEM Students" />
+        <meta property="og:description" content="Generate CA2 assignment front pages quickly for FIEM with our Top Sheet Generator. Create professional-looking front pages in just 10 seconds. Absoulately Free !" />
+        <meta property="og:url" content="https://top-sheet-generator.pages.dev/" />
+        <meta property="og:image" itemProp="image" content="https://top-sheet-generator.pages.dev/img/ogimage.png" />
         <meta property="og:type" content="website" />
-        <meta property="og:updated_time" content="1688915000" />
+        <meta property="og:updated_time" content="1691659500" />
 
-        {/* <!-- Google Search Verification Meta Tag --> */}
-        <meta name="google-site-verification" content="3GXKc9UR9k9BnM4LmY7Ti6gerE-9qU1z0ajeZmTnmj8" />
-
-        <link rel="canonical" href="https://ca2-top-sheet.pages.dev"></link>
+        <link rel="canonical" href="https://top-sheet-generator.pages.dev/" />
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" imageSizes="32x32" sizes="32x32" />
-        <title>Top Sheet Generator - CA2 Exam - FIEM</title>
+        <title>Top Sheet Generator - Easy CA2 Assignment Top Sheet Generator for FIEM Students</title>
       </Head>
 
       <Navbar />

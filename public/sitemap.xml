@@ -2,20 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://ca2-top-sheet.pages.dev</loc>
-        <lastmod>2023-07-09</lastmod>
+        <loc>https://top-sheet-generator.pages.dev</loc>
+        <lastmod>2023-09-03</lastmod>
         <changefreq>always</changefreq>
         <priority>1</priority>
     </url>
     <url>
-        <loc>https://ca2-top-sheet.pages.dev/allpdfs</loc>
-        <lastmod>2023-07-09</lastmod>
+        <loc>https://top-sheet-generator.pages.dev/allpdfs</loc>
+        <lastmod>2023-09-03</lastmod>
         <changefreq>always</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://ca2-top-sheet.pages.dev/feedback</loc>
-        <lastmod>2023-07-09</lastmod>
+        <loc>https://top-sheet-generator.pages.dev/feedback</loc>
+        <lastmod>2023-09-03</lastmod>
         <changefreq>always</changefreq>
         <priority>0.5</priority>
     </url>
