@@ -10,7 +10,7 @@ const Navbar = () => {
                 <div className="container-fluid">
 
                     <Link className="navbar-brand" href="/">
-                        <img src="/favicon.png" alt="FIEM" width="30" height="30" className="d-inline-block align-text-top" />
+                        <img src="./favicon.png" alt="FIEM" width="30" height="30" className="d-inline-block align-text-top" />
                         <b>&nbsp; TOP&nbsp; SHEET&nbsp; GENERATOR</b>
                     </Link>
 

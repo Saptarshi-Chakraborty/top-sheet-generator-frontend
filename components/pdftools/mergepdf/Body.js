@@ -150,7 +150,7 @@ const Body = () => {
                 return;
             }
 
-            const pdfFile = await PDFDocument.load(byteArrayOfPdf);
+            const pdfFile = await PDFDocument.load(byteArrayOfPdf, { ignoreEncryption: true });
 
             // now copy pages to mergedPdf
             const copiedPages = await mergedPdf.copyPages(pdfFile, pdfFile.getPageIndices());
@@ -178,7 +178,7 @@ const Body = () => {
     }
 
     function handleFileNameChange(e) {
-        console.log(e.target.value);
+        setCustomFileName(e.target.value);
     }
 
 
