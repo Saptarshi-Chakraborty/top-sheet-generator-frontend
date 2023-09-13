@@ -53,7 +53,7 @@ const Navbar = () => {
                                 </li>
 
                                 <li className="nav-item">
-                                    <Link className="nav-link active" target='_blank' aria-current="page" href="https://www.termsfeed.com/live/17e652a8-0a04-4484-a85d-af50b6e4fbcc">Privacy Policy</Link>
+                                    <Link className="nav-link active" target='_blank' aria-current="page" href="https://www.termsfeed.com/live/5ca6cbb8-fae5-4065-9515-c43132bad8ed">Privacy Policy</Link>
                                 </li>
 
                             </ul>

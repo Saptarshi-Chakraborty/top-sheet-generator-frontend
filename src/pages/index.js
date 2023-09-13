@@ -17,7 +17,7 @@ export default function Home() {
         {/* <!-- OG Meta tags --> */}
         <meta property="og:site_name" content="Top Sheet Generator" />
         <meta property="og:title" content="Top Sheet Generator - Easy CA2 Top Sheet Generator for FIEM Students" />
-        <meta property="og:description" content="Generate CA2 assignment front pages quickly for FIEM with our Top Sheet Generator. Create professional-looking front pages in just 10 seconds. Absoulately Free !" />
+        <meta property="og:description" content="Generate CA2 assignment top sheets quickly for FIEM with our Top Sheet Generator. Create professional-looking top sheets in just 10 seconds. Absoulately Free !" />
         <meta property="og:url" content="https://top-sheet-generator.pages.dev/" />
         <meta property="og:image" itemProp="image" content="https://top-sheet-generator.pages.dev/img/ogimage.png" />
         <meta property="og:type" content="website" />

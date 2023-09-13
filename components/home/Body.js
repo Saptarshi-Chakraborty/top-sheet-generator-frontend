@@ -13,7 +13,7 @@ const Body = () => {
         <>
             <div className='notice'>
                 <Link href="/pdftools/pdf-merger" className="alert alert-success alert-dismissible fw-bold fade show p-1 mt-1 mb-0 d-block text-center text-decoration-none" role="alert">
-                    🎉 CLICK HERE TO MERGE UNLIMITED PDFs IN OUR PDF MERGER 🤩
+                    🎉 CLICK HERE TO MERGE UNLIMITED PDFs WITH OUR PDF MERGER 🤩
                 </Link>
             </div>
 

@@ -10,7 +10,7 @@ const Footer = () => {
 
             <p><Link href="/feedback" className="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover   fs-4">Leave a Message</Link></p>
 
-            <p className='mb-1'><a target='_blank' href="https://www.termsfeed.com/live/17e652a8-0a04-4484-a85d-af50b6e4fbcc">Privacy Policy</a></p>
+            <p className='mb-1'><a target='_blank' href="https://www.termsfeed.com/live/5ca6cbb8-fae5-4065-9515-c43132bad8ed">Privacy Policy</a></p>
 
             <p className='text-center my-0'>
                 Made with ❤️ by&nbsp;

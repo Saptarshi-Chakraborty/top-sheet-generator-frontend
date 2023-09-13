@@ -119,7 +119,7 @@ const FormClassRoll = ({ classRoll, setClassRoll, semester, includeClassRoll, se
 
                 </select>
                 <span className="input-group-text fw-bold"> - </span>
-                <input ref={classRoll3} onChange={updateRoll} value={rollNumber} type="number" id='cRoll3' className="form-control flex-grow-1" placeholder="Roll" maxLength={3} required={true} />
+                <input ref={classRoll3} onChange={updateRoll} value={rollNumber} type="text" id='cRoll3' className="form-control flex-grow-1" placeholder="Roll" maxLength={5} required={true} />
             </div>
 
             <div className="form-check">
