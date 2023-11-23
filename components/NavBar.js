@@ -4,13 +4,13 @@ import Link from 'next/link';
 import React from 'react'
 
 const Navbar = () => {
-    return (
+    return (  
         <>
             <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
                 <div className="container-fluid">
 
                     <Link className="navbar-brand" href="/">
-                        <img src="./favicon.png" alt="FIEM" width="30" height="30" className="d-inline-block align-text-top" />
+                        <img src="/favicon.png" alt="FIEM" width="30" height="30" className="d-inline-block align-text-top" />
                         <b>&nbsp; TOP&nbsp; SHEET&nbsp; GENERATOR</b>
                     </Link>
 
@@ -43,8 +43,8 @@ const Navbar = () => {
                                     <a className="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">PDF Tools</a>
 
                                     <ul className="dropdown-menu dropdown-menu-dark text-white">
-                                        <li><a className="dropdown-item" href="/pdftools/pdf-merger">Merge PDF</a></li>
-                                        <li><a className="dropdown-item" href="/pdftools/pdf-compressor">Compress PDF</a></li>
+                                        <li><Link className="dropdown-item" href="/pdftools/pdf-merger">Merge PDF</Link></li>
+                                        <li><Link className="dropdown-item" href="/pdftools/pdf-compressor">Compress PDF</Link></li>
                                     </ul>
                                 </li>
 

@@ -158,6 +158,17 @@ const Body = () => {
             copiedPages.forEach((page) => mergedPdf.addPage(page));
         }
 
+        // Set Meta Data
+        mergedPdf.setTitle("Merged PDF File");
+        mergedPdf.setAuthor("TOP SHEET GENERATOR - PDF MERGER");
+        mergedPdf.setSubject("Merged PDF File");
+        mergedPdf.setKeywords(["TOP SHEET GENERATOR", "PDF MERGER", "MERGED PDF FILE"]);
+        mergedPdf.setProducer("TOP SHEET GENERATOR - PDF MERGER");
+        mergedPdf.setCreator("TOP SHEET GENERATOR - PDF MERGER");
+        mergedPdf.setCreationDate(new Date());
+        mergedPdf.setModificationDate(new Date());
+
+        
         const tempFile = await mergedPdf.save()
         setMergedPdfFile(() => tempFile);
 
