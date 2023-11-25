@@ -2,9 +2,12 @@
 
 import Link from 'next/link';
 import React from 'react'
+import { isLocalEnvironment } from '../utility/localEnvironment';
 
 const Navbar = () => {
-    return (  
+    const isLocal = isLocalEnvironment();
+
+    return (
         <>
             <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
                 <div className="container-fluid">
@@ -55,6 +58,14 @@ const Navbar = () => {
                                 <li className="nav-item">
                                     <Link className="nav-link active" target='_blank' aria-current="page" href="https://www.termsfeed.com/live/5ca6cbb8-fae5-4065-9515-c43132bad8ed">Privacy Policy</Link>
                                 </li>
+                                
+                                {
+
+                                    (isLocal) &&
+                                    <li className="nav-item">
+                                        <Link className="nav-link text-decoration-underline active text-bg-info" aria-current="page" href="/experimental">Experimental</Link>
+                                    </li>
+                                }
 
                             </ul>
                         </div>
