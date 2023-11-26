@@ -1,7 +1,7 @@
 "use client";
 
 import Navbar from '@components/NavBar'
-import PrivacyPolicyBody from '@components/PrivacyPolicyBody'
+import PrivacyPolicyBody from '@components/ExperimentalComponents/PrivacyPolicyBody'
 import Head from 'next/head'
 
 export default function Home() {
@@ -15,13 +15,12 @@ export default function Home() {
                 <meta name="description" content="Generate CA2 assignment top sheets quickly for FIEM with our Top Sheet Generator. Create professional-looking front pages in just 10 seconds. Absoulately Free !" />
                 <meta name="keywords" content="Top Sheet Generator, CA2 assignment front page, FIEM assignment, easy assignment generator, FIEM Top Sheet Generator, MAKAUT CA2 Top Sheet Generator, CA2 Assignmet Top Sheet" />
 
-                <title>Top Sheet Generator - Privacy Policy</title>
+                <title>Privacy Policy - Top Sheet Generator</title>
             </Head>
 
             <Navbar />
 
             <PrivacyPolicyBody />
-
 
 
         </>

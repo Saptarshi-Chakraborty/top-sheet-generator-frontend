@@ -13,3 +13,6 @@ const AdminProvider = ({ children }) => {
         </AdminContext.Provider>
     );
 };
+
+// export both the context and the provider
+export { AdminContext, AdminProvider };

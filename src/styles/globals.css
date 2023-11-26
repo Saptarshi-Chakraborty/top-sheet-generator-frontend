@@ -1,4 +1,8 @@
 /* Add a media query to padding 1em to nav element when the screen size is greater than 600px */
+:root{
+  --button-height: 1.5rem;
+}
+
 @media screen and (width > 1000px) {
   nav {
     padding-left: 1em !important;

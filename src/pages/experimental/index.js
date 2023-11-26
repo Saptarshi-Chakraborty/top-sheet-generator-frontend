@@ -9,7 +9,7 @@ const index = () => {
             <Head>
                 <title>Experimental Page</title>
             </Head>
-            
+
             <Navbar />
 
             <div className="container my-2">
@@ -18,7 +18,9 @@ const index = () => {
 
                 <h2>Pages</h2>
                 <ul>
+                    <li><Link href="/experimental/our-privacy-policy">Privacy Policy Page</Link></li>
                     <li><Link href="/experimental/admin/login">Admin Login Page</Link></li>
+                    <li><Link href="/experimental/admin/dashboard">Admin Dashboard Page</Link></li>
                 </ul>
 
             </div>

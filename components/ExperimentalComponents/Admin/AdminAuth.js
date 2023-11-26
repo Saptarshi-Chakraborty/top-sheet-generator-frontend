@@ -7,7 +7,7 @@ const CONSTANTS = {
     PRODUCTION_API_URL: 'https://top-sheet-generator-config-api.services1-sc.workers.dev',
 }
 
-export function setAuthToken(token) {
+export function storeAuthToken(token) {
     // save token to local storage
     localStorage.setItem(CONSTANTS.LOCAL_STORAGE_KEY, token);
 }
@@ -50,26 +50,42 @@ export function logoutAdmin() {
     removeAuthToken();
 
     // redirect to login page
-    useRouter().replace('/experimental/admin/login');
+    const router = useRouter();
+    router.push('/experimental/admin/login');
 }
 
 
-export async function loginUser(username, password) {
+export async function loginAdmin(username, password) {
+    try {
+        console.log('-'.repeat(50));
+        let API = (process.env.NODE_ENV === 'development') ? CONSTANTS.LOCAL_API_URL : CONSTANTS.PRODUCTION_API_URL;
 
-    let API = (process.env.NODE_ENV === 'development') ? CONSTANTS.LOCAL_API_URL : CONSTANTS.PRODUCTION_API_URL;
+        API = API + '/admin/login';
 
-    API = API + '/admin/login';
+        let formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
 
-    const res = await fetch('http://localhost:3000/api/experimental/admin/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, password })
-    });
-    const data = await res.json();
-    console.log('data', data);
-    return data;
-    return { success: true, token: '123456' };
+        const params = {
+            method: 'POST',
+            body: formData,
+        };
+
+        const resp = await fetch(API, params).then(res => res.json());
+        console.log(resp);
+
+        const { status, msg, token } = resp;
+
+        if (status === 'success') {
+            storeAuthToken(token);
+            return true;
+        } else {
+            return false;
+        }
+
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
 
 }

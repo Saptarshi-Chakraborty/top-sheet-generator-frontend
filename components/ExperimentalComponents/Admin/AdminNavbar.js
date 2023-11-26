@@ -1,13 +1,37 @@
+"use client";
+
 import Link from 'next/link'
 import React, { useLayoutEffect, useState } from 'react'
-import { isAdminLoggedIn, logoutAdmin } from './AdminAuth'
+import { isAdminLoggedIn, removeAuthToken } from './AdminAuth'
+import { useRouter } from 'next/router';
 
 const AdminNavbar = () => {
+    const router = useRouter();
+
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     useLayoutEffect(() => {
         setIsLoggedIn(isAdminLoggedIn())
+
+        return () => {
+            setIsLoggedIn(false)
+        }
     }, [])
+
+    const logoutAdmin = () => {
+        if (confirm('Are you sure you want to logout?') === false) {
+            return;
+        }
+
+        console.log('logging out admin');
+
+        // remove token from local storage
+        removeAuthToken();
+
+        // redirect to login page
+        router.push('/experimental/admin/login');
+    }
+
 
     console.log('isALoggedIn', isLoggedIn);
 
@@ -64,15 +88,11 @@ const AdminNavbar = () => {
                         <ul className="d-flex navbar-nav me-auto mb-2 mb-lg-0 gap-2">
 
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" href="/experimental/admin">Home</Link>
+                                <Link className="nav-link active" aria-current="page" href="/experimental/admin/dashboard">Dashboard</Link>
                             </li>
 
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" href="/allpdfs">All PDFs</Link>
-                            </li>
-
-                            <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" href="/ca1">CA1 Exam</Link>
+                                <Link className="nav-link active" aria-current="page" href="#">Test System</Link>
                             </li>
 
                             <li className="nav-item dropdown">
@@ -84,6 +104,9 @@ const AdminNavbar = () => {
                                 </ul>
                             </li>
 
+                            <li className="nav-item">
+                                <Link className="nav-link text-decoration-underline active text-bg-info" aria-current="page" href="/experimental">Experimental</Link>
+                            </li>
 
                             <li className="nav-item">
                                 <Link className="nav-link text-decoration-underline active text-bg-success" aria-current="page" href="/">Main Website</Link>
