@@ -55,6 +55,7 @@ const FetchButton = () => {
         const data = result.data;
         console.log(data);
 
+        localStorage.setItem('oldConfig', JSON.stringify(data));
         setConfig({ ...config, data, hasFetched: true, timestamp: new Date() });
         setisLoading(false);
 

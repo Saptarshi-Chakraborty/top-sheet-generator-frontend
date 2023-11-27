@@ -6,6 +6,7 @@ import { ExperimentalToggleButton } from './templateComponents'
 import { useRouter } from 'next/router';
 import { isAdminLoggedIn } from './AdminAuth';
 import FetchButton from './FetchButton';
+import CONFIG_FIELDS from './ConfigFields';
 
 const AdminDashboard = () => {
     const router = useRouter();
@@ -46,8 +47,6 @@ const AdminDashboard = () => {
                     <FetchButton />
                 </div>
 
-
-
                 {/* Last fetched time */}
                 {
                     (config.timestamp) &&
@@ -57,15 +56,27 @@ const AdminDashboard = () => {
                     </div>
                 }
 
-                {/* Configurations */}
-                <h3>All the Pages of the Website : </h3>
 
-                <ExperimentalToggleButton fieldName="homePage" title="Home Page" />
-
-
+                {
+                    // if the data is fetched from server
+                    config.hasFetched && <ConfigBox />
+                }
             </section>
         </>
     )
 }
+
+const ConfigBox = () => {
+    return (<div className='my-3'>
+        <h3>All the Pages of the Website : </h3>
+
+        <ExperimentalToggleButton fieldName={CONFIG_FIELDS.homePage} title="Home Page" />
+        <ExperimentalToggleButton fieldName={CONFIG_FIELDS.compressPdfPage} title="Compress PDF Page" />
+        <ExperimentalToggleButton fieldName={CONFIG_FIELDS.mergePdfPage} title="Merge PDF Page" />
+        <ExperimentalToggleButton fieldName={CONFIG_FIELDS.mergePdfPage} title="Merge PDF Page" />
+
+    </div>)
+}
+
 
 export default AdminDashboard
