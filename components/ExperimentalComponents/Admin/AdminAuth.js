@@ -54,7 +54,6 @@ export function logoutAdmin() {
     router.push('/experimental/admin/login');
 }
 
-
 export async function loginAdmin(username, password) {
     try {
         console.log('-'.repeat(50));

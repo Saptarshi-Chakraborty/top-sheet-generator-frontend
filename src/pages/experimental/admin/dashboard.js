@@ -7,6 +7,8 @@ import { isAdminLoggedIn } from '@components/ExperimentalComponents/Admin/AdminA
 import { useRouter } from 'next/router';
 import { ConfigProvider } from '@components/ExperimentalComponents/Admin/ConfigProvider';
 import { useLayoutEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const dashboard = () => {
@@ -38,6 +40,7 @@ const dashboard = () => {
                 <AdminDashboard />
             </ConfigProvider>
 
+            <ToastContainer />
         </main>
 
     </>

@@ -5,7 +5,7 @@ const ConfigContext = createContext();
 
 // create a provider for components to consume and subscribe to changes
 const ConfigProvider = ({ children }) => {
-    const [config, setConfig] = useState({ hasFetched: true, data: { homePage: false }, timestamp: null });
+    const [config, setConfig] = useState({ hasFetched: false, data: { }, timestamp: null });
 
     return (
         <ConfigContext.Provider value={{ config, setConfig }}>

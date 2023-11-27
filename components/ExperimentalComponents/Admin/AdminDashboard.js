@@ -5,6 +5,7 @@ import { ConfigContext } from './ConfigProvider';
 import { ExperimentalToggleButton } from './templateComponents'
 import { useRouter } from 'next/router';
 import { isAdminLoggedIn } from './AdminAuth';
+import FetchButton from './FetchButton';
 
 const AdminDashboard = () => {
     const router = useRouter();
@@ -20,9 +21,6 @@ const AdminDashboard = () => {
         }
 
         // eslint-disable-line
-        return () => {
-            // cleanup
-        };
     }, [])
 
 
@@ -34,8 +32,8 @@ const AdminDashboard = () => {
                 <h2>All the Configurations of the website</h2>
 
                 {/* IF the data is fetched from server or not */}
-                <div className='my-3'>
-                    <p className='mb-0'>
+                <div className='my-3 mb-0 d-flex justify-content-between align-items-center'>
+                    <div>
                         <strong>Data Fetching Status : &nbsp;</strong>
                         {
                             config.hasFetched ?
@@ -43,18 +41,19 @@ const AdminDashboard = () => {
                                 :
                                 <span className="badge text-bg-danger">Not Fetched</span>
                         }
-                    </p>
+                    </div>
+
+                    <FetchButton />
                 </div>
+
+
 
                 {/* Last fetched time */}
                 {
-                    config.timestamp &&
-                    <div className='my-3'>
-                        <p className='mb-0'>
-                            <strong>Last Fetched Time : &nbsp;</strong>
-
-                            <span className="badge text-bg-success">{new Date(config.timestamp)}</span>
-                        </p>
+                    (config.timestamp) &&
+                    <div className='my-3 mt-1 text-muted'>
+                        Last Fetched Time : &nbsp;
+                        <span >{Date(config.timestamp)}</span>
                     </div>
                 }
 
