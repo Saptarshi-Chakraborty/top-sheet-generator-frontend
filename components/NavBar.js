@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import React from 'react'
 import { isLocalEnvironment } from '../utility/localEnvironment';
+import LoggedInMenu from './ExperimentalComponents/LoggedInMenu';
 
 const Navbar = () => {
     const isLocal = isLocalEnvironment();
@@ -55,10 +56,9 @@ const Navbar = () => {
                                     <Link className="nav-link active" aria-current="page" href="/feedback">Feedback</Link>
                                 </li>
 
-                                <li className="nav-item">
-                                    <Link className="nav-link active" target='_blank' aria-current="page" href="https://www.termsfeed.com/live/5ca6cbb8-fae5-4065-9515-c43132bad8ed">Privacy Policy</Link>
-                                </li>
-                                
+                                <LoggedInMenu />
+
+
                                 {
 
                                     (isLocal) &&
@@ -66,6 +66,9 @@ const Navbar = () => {
                                         <Link className="nav-link text-decoration-underline active text-bg-info" aria-current="page" href="/experimental">Experimental</Link>
                                     </li>
                                 }
+
+
+
 
                             </ul>
                         </div>
